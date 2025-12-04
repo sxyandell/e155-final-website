@@ -1,0 +1,53 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Spinning Synth: MCU + FPGA Audio System"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Overview
+      - text: Design
+        menu:
+          - href: technical.qmd
+            text: Technical Info
+          - href: mcu.qmd
+            text: MCU
+          - href: fpga.qmd
+            text: FPGA
+      - text: Documentation
+        menu:
+          - href: bom.qmd
+            text: Bill of Materials
+          - href: results.qmd
+            text: Results
+          - href: references.qmd
+            text: References
+          - href: team.qmd
+            text: Team
+          - href: acknowledgements.qmd
+            text: Acknowledgements
+          - href: media.qmd
+            text: Media
+  page-navigation: true
+  search: true
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: show
+    smooth-scroll: true
+
+filters:
+  - quarto
+
+execute:
+  freeze: auto
+
+bibliography: references.bib
+
+

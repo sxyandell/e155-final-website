@@ -1,0 +1,28 @@
+---
+about:
+  template: jolla
+  
+---
+
+<img src="docs/images/headshot_m.jpg" width="180" style="border-radius: 50%;">
+
+
+Madeleine Kan is a senior engineering major at [Harvey Mudd College](https://hmc.edu). She is studying
+
+general engineering with a focus on computer engineering with biomedical applications. She has experience
+
+in supply chain process engineering, FPGA and microcontroller programming, and mechanical design and analysis. 
+
+In the spring of 2025, she worked as part of the UC Berkeley clinic team to upgrade the communication protocol 
+
+for a low-cost air quality sensor. Since the start of 2024, she has worked in the Quantum Quasars Lab to develop 
+
+an astronomical random number generator for Bell-type tests of quantum entanglement. She also has tutored for
+
+a variety of engineering courses and labs. She is part of the CMS Swim team, specializing in sprint freestyle and butterfly.
+
+In her free time, she likes to crochet, learn the piano, and spend time with her friends and family.
+
+**Links**  
+[<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" width="32"> GitHub](https://github.com/madeleieine)  
+[<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" width="32"> LinkedIn](https://www.linkedin.com/in/madeleinekan/)

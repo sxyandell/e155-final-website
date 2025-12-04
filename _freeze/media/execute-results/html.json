@@ -1,0 +1,17 @@
+{
+  "hash": "52a06c6af5d105f43f8bd0acb00eb74e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Media\"\ndescription: \"Demo video and photos documenting the final design and build.\"\n---\n\n## Demo Video\n\nEmbed or link a short video showcasing the system in action.\n\n## Photos\n\n- Final design photos (front, back, internals)\n- Build process photos\n\nAdd images to an `images/` folder and reference them here, for example:\n\n\n::: {.cell}\n\n:::\n\n\n\n",
+    "supporting": [
+      "media_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

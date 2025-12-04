@@ -1,0 +1,85 @@
+---
+title: "Technical Information"
+description: "System architecture, protocols, block diagram, calculations, and risks."
+---
+
+## System Architecture
+
+This system produces two independent audio outputs, one driven by the gyroscope-derived baseline frequency and one driven by
+ keypad+knob inputs. The MCU ingests user inputs, maps them to frequencies, and generates digital waveforms which the FPGA filters and 
+ processes. The final waveforms are converted to analog and amplified to the speakers.
+
+### Block Diagram
+
+```{=mermaid}
+flowchart LR
+  subgraph Inputs
+    GYRO[Digital Gyroscope\n8-bit data over SPI]:::io
+    KEYS[8-Key Keypad\nGPIO Matrix]:::io
+    KNOBS[Knobs (Pots)\nAnalog -> MCU ADC]:::io
+  end
+
+  subgraph MCU[MCU: STM32L432KC]
+    MCU_IO[Input Processing\nGPIO, SPI, ADC]
+    MCU_MAP[Frequency Mapping\nNote/Angular Velocity -> f]
+    MCU_GEN[Waveform Generation\nDigital Oscillators]
+    MCU_SPI[SPI TX/RX\nWaveforms to/from FPGA]
+  end
+
+  subgraph FPGA[FPGA: Lattice iCE40 UP5K\n(UPduino v3.1)]
+    FPGA_DSP[DSP + Filters\nLPF / HPF / BPF]
+    FPGA_CTRL[Control Logic\nKnob Modulation Paths]
+    FPGA_I2C[I2C to External DACs\nTwo Channels]
+  end
+
+  subgraph Output[Audio Output Stage]
+    DAC1[External DAC CH1\nI2C]:::io
+    DAC2[External DAC CH2\nI2C]:::io
+    AMP1[Amplifier CH1]
+    AMP2[Amplifier CH2]
+    SPK1[Speaker 1]:::io
+    SPK2[Speaker 2]:::io
+  end
+
+  classDef io fill:#eef,stroke:#447
+
+  GYRO -->|SPI| MCU_IO
+  KEYS -->|GPIO| MCU_IO
+  KNOBS -->|ADC| MCU_IO
+  MCU_IO --> MCU_MAP --> MCU_GEN -->|SPI| MCU_SPI
+  MCU_SPI -->|SPI| FPGA_DSP
+  FPGA_CTRL <-->|Control| MCU_IO
+  FPGA_DSP -->|I2C Waveforms| FPGA_I2C
+  FPGA_I2C --> DAC1 --> AMP1 --> SPK1
+  FPGA_I2C --> DAC2 --> AMP2 --> SPK2
+```
+
+### Interfaces and Protocols
+
+- Gyroscope to MCU: SPI, 8-bit samples (per project description)
+- Keypad to MCU: GPIO matrix scanning
+- Knobs to MCU: On-chip ADC channels (voltage from potentiometers)
+- MCU to FPGA: SPI (waveform samples, control/status)
+- FPGA to DACs: I2C (two channels for two speakers)
+
+## Calculations and Performance
+
+- Frequency resolution: \( \text{resolution} = \frac{\text{sampling rate}}{N} \)
+- PCLK minimum speed (given): \( \text{PCLK}_{\min} = \frac{\text{SYSCLK}}{256 \times 16} \approx 9.7\text{ kHz} \)
+- Low-pass filter example: \( N = 4 \Rightarrow \frac{9.7\text{ kHz}}{4} \approx 2.5\text{ kHz} \)
+- High-pass filter example: \( N = 8 \Rightarrow \frac{9.7\text{ kHz}}{8} \approx 1.2\text{ kHz} \)
+- Multiplier estimate: Each one requires \( (N/2)\log_2 N \) multipliers
+  - \( 2\log_2(4) + 4\log_2(8) = 4 + 12 = 16 \) complex 8-bit multipliers
+
+Notes:
+- Select sampling rate and FFT/window sizes to meet target frequency resolution and latency.
+- Ensure SPI bandwidth supports aggregate waveform/control traffic between MCU and FPGA.
+- I2C bus timing must accommodate two DAC channels at chosen audio sample rate.
+
+## Risk Elements
+
+- Slip ring + gyroscope signal integrity and noise are the top risk. The signal must remain readable at the target spin frequency; additional filtering and shielding may be necessary.
+- Scheduling and concurrency: The MCU must read keypad/gyro and stream/control audio at rates that keep both outputs continuous and within range, while allowing the FPGA adequate time for filtering.
+- Tuning filter parameters and stability: Filter orders and cutoff frequencies must be tuned to avoid audible artifacts and preserve musical intent.
+
+

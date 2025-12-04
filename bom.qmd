@@ -1,0 +1,6 @@
+---
+title: "Bill of Materials"
+description: "Components, part numbers, quantities, prices, and sourcing."
+---
+// Include image of BOM
+

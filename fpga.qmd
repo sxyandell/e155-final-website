@@ -1,0 +1,23 @@
+---
+title: "FPGA Design"
+description: "Lattice iCE40 UP5K (UPduino v3.1) DSP and filtering pipeline."
+---
+
+## FPGA Overview (iCE40 UP5K on UPduino v3.1)
+
+The FPGA receives square waves from the MCU over wires. 
+It sends those waves to external DACs over I2C (two channels for two independent speakers).
+
+### Main Features
+
+- I/O:
+  - SPI interface for waveform/control with MCU
+  - I2C master to two external DACs
+
+### Data Flow
+
+1. Receive digital waveform samples from MCU over SPI
+4. Output two-channel digital audio via I2C to external DACs
+5. DAC analog outputs are amplified and sent to speakers
+
+

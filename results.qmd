@@ -1,0 +1,23 @@
+---
+title: "Results"
+description: "Quantitative and qualitative outcomes with supporting discussion."
+---
+
+## Key Results
+
+- Audio outputs: Two independent channels produced in real time
+- Frequency mapping: Gyro-derived baseline and keypad-derived note frequencies
+- Filtering: FPGA-based LPF/HPF/BPF applied successfully to waveforms
+
+## Measurements
+
+- Sampling rates and effective audio bandwidths
+- End-to-end latency (input to analog output)
+- Signal-to-noise ratio (post-filter)
+- Frequency accuracy (tuning errors vs. target)
+- Resource utilization (FPGA LUTs/BRAM/DSPs; MCU CPU/memory)
+
+## Discussion
+
+
+
