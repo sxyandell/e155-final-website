@@ -15,6 +15,10 @@ The system uses two core processing units: a microcontroller (MCU) and an FPGA.
 - The MCU handles all user input from the gyroscope and keypad using the I2C protocol. It performs frequency mapping, converting the measured angular velocity or note input into precise frequency values, and generates a corresponding digital waveform. These waveforms are transmitted to the FPGA over the Serial Peripheral Interface (SPI).
 - On the FPGA, waveforms from the MCU are sent to an external DAC and then amplifyed to speakers.
 
+## GitHub Repository 
+[GitHub Repository](https://github.com/sxyandell/s-m_microp_project)
+
+
 ## Quick Links
 
 - [Technical Information](technical.qmd)
@@ -25,6 +29,5 @@ The system uses two core processing units: a microcontroller (MCU) and an FPGA.
 - [References](references.qmd)
 - [Team](team.qmd)
 - [Acknowledgements](acknowledgements.qmd)
-- [Media](media.qmd)
 
 
