@@ -3,5 +3,5 @@ title: "Acknowledgements"
 description: "Thanks to people and organizations who supported the project."
 ---
 
-We thank Prof. Spencerand peers for feedback on design decisions.
+We thank Prof. Spencer and peers for feedback on design decisions.
 
