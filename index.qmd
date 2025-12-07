@@ -11,3 +11,4 @@ The goal of this project is to design an analog style synthesizer with an instru
 ## Video
 
 ## Link to GitHub
+[GitHub](https://github.com/sxyandell/s-m_microp_project)
