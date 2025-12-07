@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Citations and hyperlinks to outside resources.">
 
 <title>References – Spinning Synth: MCU + FPGA Audio System</title>
 <style>
@@ -21,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -115,58 +94,40 @@ div.csl-indent {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Overview</span></a>
+<span class="menu-text">Home Page</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Design</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-design">    
-        <li>
-    <a class="dropdown-item" href="./technical.html">
- <span class="dropdown-text">Technical Info</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./system-overview.html"> 
+<span class="menu-text">System Overview</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./mcu.html">
- <span class="dropdown-text">MCU</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./hardware.html"> 
+<span class="menu-text">Hardware</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./fpga.html">
- <span class="dropdown-text">FPGA</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./fpga.html"> 
+<span class="menu-text">FPGA</span></a>
   </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Documentation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-documentation">    
-        <li>
-    <a class="dropdown-item" href="./bom.html">
- <span class="dropdown-text">Bill of Materials</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./mcu.html"> 
+<span class="menu-text">MCU</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./results.html">
- <span class="dropdown-text">Results</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./results.html"> 
+<span class="menu-text">Results</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./references.html">
- <span class="dropdown-text">References</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./team.html"> 
+<span class="menu-text">Team</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./team.html">
- <span class="dropdown-text">Team</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="./references.html" aria-current="page"> 
+<span class="menu-text">References</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./acknowledgements.html">
- <span class="dropdown-text">Acknowledgements</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./acknowledgements.html"> 
+<span class="menu-text">Acknowledgements</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./media.html">
- <span class="dropdown-text">Media</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -178,15 +139,8 @@ div.csl-indent {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#cited-works" id="toc-cited-works" class="nav-link active" data-scroll-target="#cited-works">Cited Works</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -196,11 +150,6 @@ div.csl-indent {
 <h1 class="title">References</h1>
 </div>
 
-<div>
-  <div class="description">
-    Citations and hyperlinks to outside resources.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -215,39 +164,10 @@ div.csl-indent {
 </header>
 
 
-<p>Below are citations to datasheets and tools relevant to this project. Add any additional references used during design and implementation.</p>
-<section id="cited-works" class="level2">
-<h2 class="anchored" data-anchor-id="cited-works">Cited Works</h2>
-<p>This page uses the site bibliography (<code>references.bib</code>). Example citations:</p>
-<ul>
-<li>STM32L432 MCU datasheet <span class="citation" data-cites="stm32l432kc-ds">(<a href="#ref-stm32l432kc-ds" role="doc-biblioref"><em>STM32L432KC Datasheet</em> 2018</a>)</span></li>
-<li>Lattice iCE40 UltraPlus FPGA <span class="citation" data-cites="ice40up5k-ds">(<a href="#ref-ice40up5k-ds" role="doc-biblioref"><em>iCE40 UltraPlus Family Data Sheet</em> 2017</a>)</span></li>
-<li>Quarto documentation <span class="citation" data-cites="quarto-docs">(<a href="#ref-quarto-docs" role="doc-biblioref"><em>Quarto Documentation</em> 2025</a>)</span></li>
-</ul>
-</section>
-<section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links</h2>
-<ul>
-<li>STM32 Nucleo-32 (NUCLEO-L432KC) — see vendor page</li>
-<li>UPduino v3.1 board resources — see vendor page</li>
-<li>KiCad EDA tool — see project page</li>
-</ul>
 
 
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-ice40up5k-ds" class="csl-entry" role="listitem">
-<em>iCE40 UltraPlus Family Data Sheet</em>. 2017. Lattice Semiconductor. <a href="https://www.latticesemi.com/en/Products/FPGAandCPLD/iCE40UltraPlus">https://www.latticesemi.com/en/Products/FPGAandCPLD/iCE40UltraPlus</a>.
-</div>
-<div id="ref-quarto-docs" class="csl-entry" role="listitem">
-<em>Quarto Documentation</em>. 2025. Posit PBC. <a href="https://quarto.org/docs/">https://quarto.org/docs/</a>.
-</div>
-<div id="ref-stm32l432kc-ds" class="csl-entry" role="listitem">
-<em>STM32L432KC Datasheet</em>. 2018. STMicroelectronics. <a href="https://www.st.com/resource/en/datasheet/stm32l432kc.pdf">https://www.st.com/resource/en/datasheet/stm32l432kc.pdf</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

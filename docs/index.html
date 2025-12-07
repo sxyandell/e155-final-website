@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="An analog-style synthesizer with MCU+FPGA real-time audio, controlled by a gyroscope, keypad, and knobs.">
 
-<title>Project Overview – Spinning Synth: MCU + FPGA Audio System</title>
+<title>Home Page – Spinning Synth: MCU + FPGA Audio System</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,58 +94,40 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Overview</span></a>
+<span class="menu-text">Home Page</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Design</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-design">    
-        <li>
-    <a class="dropdown-item" href="./technical.html">
- <span class="dropdown-text">Technical Info</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./system-overview.html"> 
+<span class="menu-text">System Overview</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./mcu.html">
- <span class="dropdown-text">MCU</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./hardware.html"> 
+<span class="menu-text">Hardware</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./fpga.html">
- <span class="dropdown-text">FPGA</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./fpga.html"> 
+<span class="menu-text">FPGA</span></a>
   </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Documentation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-documentation">    
-        <li>
-    <a class="dropdown-item" href="./bom.html">
- <span class="dropdown-text">Bill of Materials</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./mcu.html"> 
+<span class="menu-text">MCU</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./results.html">
- <span class="dropdown-text">Results</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./results.html"> 
+<span class="menu-text">Results</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./references.html">
- <span class="dropdown-text">References</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./team.html"> 
+<span class="menu-text">Team</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./team.html">
- <span class="dropdown-text">Team</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./references.html"> 
+<span class="menu-text">References</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./acknowledgements.html">
- <span class="dropdown-text">Acknowledgements</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./acknowledgements.html"> 
+<span class="menu-text">Acknowledgements</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./media.html">
- <span class="dropdown-text">Media</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -163,8 +144,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-description-and-overview" id="toc-project-description-and-overview" class="nav-link active" data-scroll-target="#project-description-and-overview">Project Description and Overview</a></li>
-  <li><a href="#quick-links" id="toc-quick-links" class="nav-link" data-scroll-target="#quick-links">Quick Links</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#video" id="toc-video" class="nav-link" data-scroll-target="#video">Video</a></li>
+  <li><a href="#link-to-github" id="toc-link-to-github" class="nav-link" data-scroll-target="#link-to-github">Link to GitHub</a></li>
   </ul>
 </nav>
     </div>
@@ -173,14 +155,9 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Overview</h1>
+<h1 class="title">Home Page</h1>
 </div>
 
-<div>
-  <div class="description">
-    An analog-style synthesizer with MCU+FPGA real-time audio, controlled by a gyroscope, keypad, and knobs.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -195,32 +172,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="project-description-and-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-description-and-overview">Project Description and Overview</h2>
-<p>The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source.</p>
-<ul>
-<li>The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker.</li>
-<li>The keypad and knobs control the note and pitch of another sound output to a different speaker.</li>
-</ul>
-<p>The system uses two core processing units: a microcontroller (MCU) and an FPGA.</p>
-<ul>
-<li>The MCU handles all user input from the gyroscope and keypad using the I2C protocol. It performs frequency mapping, converting the measured angular velocity or note input into precise frequency values, and generates a corresponding digital waveform. These waveforms are transmitted to the FPGA over the Serial Peripheral Interface (SPI).</li>
-<li>On the FPGA, waveforms from the MCU are sent to an external DAC and then amplifyed to speakers.</li>
-</ul>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source. - The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker. - The keypad and knobs control the note and pitch of another sound output to a different speaker.</p>
 </section>
-<section id="quick-links" class="level2">
-<h2 class="anchored" data-anchor-id="quick-links">Quick Links</h2>
-<ul>
-<li><a href="./technical.html">Technical Information</a></li>
-<li><a href="./mcu.html">MCU Design</a></li>
-<li><a href="./fpga.html">FPGA Design</a></li>
-<li><a href="./bom.html">Bill of Materials</a></li>
-<li><a href="./results.html">Results</a></li>
-<li><a href="./references.html">References</a></li>
-<li><a href="./team.html">Team</a></li>
-<li><a href="./acknowledgements.html">Acknowledgements</a></li>
-<li><a href="./media.html">Media</a></li>
-</ul>
+<section id="video" class="level2">
+<h2 class="anchored" data-anchor-id="video">Video</h2>
+</section>
+<section id="link-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="link-to-github">Link to GitHub</h2>
 
 
 </section>

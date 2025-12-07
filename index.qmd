@@ -1,33 +1,13 @@
 ---
-title: "Project Overview"
-description: "An analog-style synthesizer with MCU+FPGA real-time audio, controlled by a gyroscope, keypad, and knobs."
+title: "Home Page"
 ---
 
-## Project Description and Overview
-
+## Abstract
 The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source.
-
 - The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker.
 - The keypad and knobs control the note and pitch of another sound output to a different speaker.
 
-The system uses two core processing units: a microcontroller (MCU) and an FPGA.
 
-- The MCU handles all user input from the gyroscope and keypad using the I2C protocol. It performs frequency mapping, converting the measured angular velocity or note input into precise frequency values, and generates a corresponding digital waveform. These waveforms are transmitted to the FPGA over the Serial Peripheral Interface (SPI).
-- On the FPGA, waveforms from the MCU are sent to an external DAC and then amplifyed to speakers.
+## Video
 
-## GitHub Repository 
-[GitHub Repository](https://github.com/sxyandell/s-m_microp_project)
-
-
-## Quick Links
-
-- [Technical Information](technical.qmd)
-- [MCU Design](mcu.qmd)
-- [FPGA Design](fpga.qmd)
-- [Bill of Materials](bom.qmd)
-- [Results](results.qmd)
-- [References](references.qmd)
-- [Team](team.qmd)
-- [Acknowledgements](acknowledgements.qmd)
-
-
+## Link to GitHub

@@ -1,4 +1,0 @@
----
-title: "Technical Information"
-description: "System architecture, protocols, block diagram, calculations, and risks."
----

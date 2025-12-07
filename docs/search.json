@@ -32,21 +32,21 @@
     "href": "results.html",
     "title": "Results",
     "section": "",
-    "text": "Audio outputs: Two independent channels produced in real time\nFrequency mapping: Gyro-derived baseline and keypad-derived note frequencies\nFiltering: FPGA-based LPF/HPF/BPF applied successfully to waveforms"
+    "text": "Audio outputs: Two independent channels produced in real time\nFrequency mapping: Gyro-derived baseline and keypad-derived note frequencies"
   },
   {
     "objectID": "results.html#key-results",
     "href": "results.html#key-results",
     "title": "Results",
     "section": "",
-    "text": "Audio outputs: Two independent channels produced in real time\nFrequency mapping: Gyro-derived baseline and keypad-derived note frequencies\nFiltering: FPGA-based LPF/HPF/BPF applied successfully to waveforms"
+    "text": "Audio outputs: Two independent channels produced in real time\nFrequency mapping: Gyro-derived baseline and keypad-derived note frequencies"
   },
   {
     "objectID": "results.html#measurements",
     "href": "results.html#measurements",
     "title": "Results",
     "section": "Measurements",
-    "text": "Measurements\n\nSampling rates and effective audio bandwidths\nEnd-to-end latency (input to analog output)\nSignal-to-noise ratio (post-filter)\nFrequency accuracy (tuning errors vs. target)\nResource utilization (FPGA LUTs/BRAM/DSPs; MCU CPU/memory)"
+    "text": "Measurements"
   },
   {
     "objectID": "results.html#discussion",
@@ -79,9 +79,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Project Overview",
+    "title": "Home Page",
     "section": "",
-    "text": "The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source.\n\nThe gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker.\nThe keypad and knobs control the note and pitch of another sound output to a different speaker.\n\nThe system uses two core processing units: a microcontroller (MCU) and an FPGA.\n\nThe MCU handles all user input from the gyroscope and keypad using the I2C protocol. It performs frequency mapping, converting the measured angular velocity or note input into precise frequency values, and generates a corresponding digital waveform. These waveforms are transmitted to the FPGA over the Serial Peripheral Interface (SPI).\nOn the FPGA, waveforms from the MCU are sent to an external DAC and then amplifyed to speakers."
+    "text": "The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source. - The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker. - The keypad and knobs control the note and pitch of another sound output to a different speaker."
   },
   {
     "objectID": "index.html#project-description-and-overview",
@@ -95,7 +95,7 @@
     "href": "index.html#quick-links",
     "title": "Project Overview",
     "section": "Quick Links",
-    "text": "Quick Links\n\nTechnical Information\nMCU Design\nFPGA Design\nBill of Materials\nResults\nReferences\nTeam\nAcknowledgements\nMedia"
+    "text": "Quick Links\n\nTechnical Information\nMCU Design\nFPGA Design\nBill of Materials\nResults\nReferences\nTeam\nAcknowledgements"
   },
   {
     "objectID": "bom.html",
@@ -109,7 +109,7 @@
     "href": "acknowledgements.html",
     "title": "Acknowledgements",
     "section": "",
-    "text": "We thank Prof. Spencerand peers for feedback on design decisions."
+    "text": "We thank Prof. Spencer and peers for feedback on design decisions."
   },
   {
     "objectID": "fpga.html",
@@ -187,5 +187,68 @@
     "title": "Spinning Synth: MCU + FPGA Audio System",
     "section": "",
     "text": "Sarah is a current undergraduate student in Computer Science, Mathematics, and Economics, she is passionate about leveraging technology and analytical problem-solving to drive impactful solutions. Her experience spans software development, optimization, and data analysis, with projects ranging from building AI-powered applications to designing mathematical models for decision-making.\nShe is always eager to explore innovative applications of technology, connect with like-minded professionals, and contribute to projects that create meaningful impact.\nLinks\n GitHub\n LinkedIn"
+  },
+  {
+    "objectID": "index.html#github-repository",
+    "href": "index.html#github-repository",
+    "title": "Project Overview",
+    "section": "GitHub Repository",
+    "text": "GitHub Repository\nGitHub Repository"
+  },
+  {
+    "objectID": "index.html#video",
+    "href": "index.html#video",
+    "title": "Home Page",
+    "section": "Video",
+    "text": "Video"
+  },
+  {
+    "objectID": "index.html#link-to-github",
+    "href": "index.html#link-to-github",
+    "title": "Home Page",
+    "section": "Link to GitHub",
+    "text": "Link to GitHub"
+  },
+  {
+    "objectID": "system-overview.html#block-diagram",
+    "href": "system-overview.html#block-diagram",
+    "title": "System Overview",
+    "section": "Block Diagram",
+    "text": "Block Diagram"
+  },
+  {
+    "objectID": "system-overview.html#what-is-new-compared-to-previous-learning",
+    "href": "system-overview.html#what-is-new-compared-to-previous-learning",
+    "title": "System Overview",
+    "section": "What is New (Compared to Previous Learning)",
+    "text": "What is New (Compared to Previous Learning)"
+  },
+  {
+    "objectID": "hardware.html#circuit-diagram",
+    "href": "hardware.html#circuit-diagram",
+    "title": "Hardware",
+    "section": "Circuit Diagram",
+    "text": "Circuit Diagram"
+  },
+  {
+    "objectID": "hardware.html#bom",
+    "href": "hardware.html#bom",
+    "title": "Hardware",
+    "section": "BOM",
+    "text": "BOM"
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Home Page",
+    "section": "",
+    "text": "The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source. - The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker. - The keypad and knobs control the note and pitch of another sound output to a different speaker."
+  },
+  {
+    "objectID": "system-overview.html#what-is-new",
+    "href": "system-overview.html#what-is-new",
+    "title": "System Overview",
+    "section": "What is New",
+    "text": "What is New"
   }
 ]

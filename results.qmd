@@ -1,15 +1,5 @@
 ---
 title: "Results"
-description: "Quantitative and qualitative outcomes"
 ---
-
-## Key Results
-
-- Audio outputs: Two independent channels produced in real time
-- Frequency mapping: Gyro-derived baseline and keypad-derived note frequencies
-
-## Measurements
-
-
 
 

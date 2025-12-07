@@ -7,29 +7,23 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Overview
-      - text: Design
-        menu:
-          - href: technical.qmd
-            text: Technical Info
-          - href: mcu.qmd
-            text: MCU
-          - href: fpga.qmd
-            text: FPGA
-      - text: Documentation
-        menu:
-          - href: bom.qmd
-            text: Bill of Materials
-          - href: results.qmd
-            text: Results
-          - href: references.qmd
-            text: References
-          - href: team.qmd
-            text: Team
-          - href: acknowledgements.qmd
-            text: Acknowledgements
-          - href: media.qmd
-            text: Media
+        text: Home Page
+      - href: system-overview.qmd
+        text: System Overview
+      - href: hardware.qmd
+        text: Hardware
+      - href: fpga.qmd
+        text: FPGA
+      - href: mcu.qmd
+        text: MCU
+      - href: results.qmd
+        text: Results
+      - href: team.qmd
+        text: Team
+      - href: references.qmd
+        text: References
+      - href: acknowledgements.qmd
+        text: Acknowledgements
   page-navigation: true
   search: true
 

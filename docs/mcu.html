@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="STM32L432KC responsibilities, inputs, timing, and waveform generation.">
 
 <title>MCU Design – Spinning Synth: MCU + FPGA Audio System</title>
 <style>
@@ -95,58 +94,40 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Overview</span></a>
+<span class="menu-text">Home Page</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-design" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Design</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-design">    
-        <li>
-    <a class="dropdown-item" href="./technical.html">
- <span class="dropdown-text">Technical Info</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./system-overview.html"> 
+<span class="menu-text">System Overview</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./mcu.html">
- <span class="dropdown-text">MCU</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./hardware.html"> 
+<span class="menu-text">Hardware</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./fpga.html">
- <span class="dropdown-text">FPGA</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./fpga.html"> 
+<span class="menu-text">FPGA</span></a>
   </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-documentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Documentation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-documentation">    
-        <li>
-    <a class="dropdown-item" href="./bom.html">
- <span class="dropdown-text">Bill of Materials</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="./mcu.html" aria-current="page"> 
+<span class="menu-text">MCU</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./results.html">
- <span class="dropdown-text">Results</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./results.html"> 
+<span class="menu-text">Results</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./references.html">
- <span class="dropdown-text">References</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./team.html"> 
+<span class="menu-text">Team</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./team.html">
- <span class="dropdown-text">Team</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./references.html"> 
+<span class="menu-text">References</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./acknowledgements.html">
- <span class="dropdown-text">Acknowledgements</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./acknowledgements.html"> 
+<span class="menu-text">Acknowledgements</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./media.html">
- <span class="dropdown-text">Media</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -158,19 +139,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#mcu-overview-stm32l432kc" id="toc-mcu-overview-stm32l432kc" class="nav-link active" data-scroll-target="#mcu-overview-stm32l432kc">MCU Overview (STM32L432KC)</a>
-  <ul class="collapse">
-  <li><a href="#responsibilities" id="toc-responsibilities" class="nav-link" data-scroll-target="#responsibilities">Responsibilities</a></li>
-  <li><a href="#timing-strategy" id="toc-timing-strategy" class="nav-link" data-scroll-target="#timing-strategy">Timing Strategy</a></li>
-  <li><a href="#interfaces" id="toc-interfaces" class="nav-link" data-scroll-target="#interfaces">Interfaces</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -180,11 +150,6 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">MCU Design</h1>
 </div>
 
-<div>
-  <div class="description">
-    STM32L432KC responsibilities, inputs, timing, and waveform generation.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -199,40 +164,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="mcu-overview-stm32l432kc" class="level2">
-<h2 class="anchored" data-anchor-id="mcu-overview-stm32l432kc">MCU Overview (STM32L432KC)</h2>
-<p>The MCU reads three inputs to determine the two output frequencies:</p>
-<ol type="1">
-<li>Keypad (8 keys) via GPIO scanning</li>
-<li>Gyroscope via SPI (8-bit angular acceleration/velocity data)</li>
-<li>Knobs via on-chip ADC (continuous control for pitch/modulation)</li>
-</ol>
-<p>Based on these inputs, the MCU computes two desired frequencies to be played on two speakers. The MCU generates corresponding digital waveforms and communicates with the FPGA over SPI for filtering and additional DSP.</p>
-<section id="responsibilities" class="level3">
-<h3 class="anchored" data-anchor-id="responsibilities">Responsibilities</h3>
-<ul>
-<li>Input acquisition: GPIO keypad scan, SPI gyro reads, ADC sampling (knobs)</li>
-<li>Frequency mapping: Key-to-frequency and angular velocity-to-frequency conversions</li>
-<li>Waveform generation: Digital oscillators at target frequencies</li>
-<li>Streaming/control to FPGA via SPI</li>
-<li>Receiving filtered waveforms/status from FPGA</li>
-</ul>
-</section>
-<section id="timing-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="timing-strategy">Timing Strategy</h3>
-<p>A pin on the MCU is connected to a timer associated with one of the two target frequencies. The timer is toggled at a rate fast enough that the resulting composite output sounds like the sum of the two notes, while remaining slow enough for the FPGA to sample and filter both components effectively. This balances perceptual audio quality with FPGA processing constraints.</p>
-</section>
-<section id="interfaces" class="level3">
-<h3 class="anchored" data-anchor-id="interfaces">Interfaces</h3>
-<ul>
-<li>SPI: Gyroscope reads, waveform/control data exchange with FPGA</li>
-<li>GPIO: 8-key keypad matrix</li>
-<li>ADC: Knob voltages (modulation, pitch bend, filter control, etc.)</li>
-</ul>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

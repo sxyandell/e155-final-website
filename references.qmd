@@ -1,22 +1,5 @@
 ---
 title: "References"
-description: "Citations and hyperlinks to outside resources."
 ---
-
-Below are citations to datasheets and tools relevant to this project. Add any additional references used during design and implementation.
-
-## Cited Works
-
-This page uses the site bibliography (`references.bib`). Example citations:
-
-- STM32L432 MCU datasheet [@stm32l432kc-ds]
-- Lattice iCE40 UltraPlus FPGA [@ice40up5k-ds]
-- Quarto documentation [@quarto-docs]
-
-## Links
-
-- STM32 Nucleo-32 (NUCLEO-L432KC) — see vendor page
-- UPduino v3.1 board resources — see vendor page
-- KiCad EDA tool — see project page
 
 
