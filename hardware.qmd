@@ -5,7 +5,7 @@ title: "Hardware"
 ## New Hardware/Components Description
 
 ## Circuit Diagram
-![Circuit Diagram](docs\images\schematic.png){width=75%, fig-align="center"}
+![Circuit Diagram, actual](docs\images\circuitdiagram_bw.png){width=75%, fig-align="center"}
 
 ## BOM
 

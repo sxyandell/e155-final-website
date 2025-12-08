@@ -1568,12 +1568,6 @@
 		(uuid "9130e4aa-5687-466a-aec9-5609468f6958")
 	)
 	(junction
-		(at 154.94 40.64)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "95c2492f-c47e-4991-a428-33a743ef4952")
-	)
-	(junction
 		(at 83.82 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1610,22 +1604,12 @@
 		(uuid "ff3fcddc-83ef-421c-bce0-fe1f569a1d2b")
 	)
 	(no_connect
-		(at 40.64 95.25)
+		(at 50.8 95.25)
 		(uuid "c7893255-0fab-4146-9379-2e45026993d7")
 	)
 	(no_connect
-		(at 40.64 97.79)
+		(at 50.8 97.79)
 		(uuid "d6e40bcd-bafe-4062-b23c-c43489919e5d")
-	)
-	(wire
-		(pts
-			(xy 146.05 40.64) (xy 154.94 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0702d201-9eb3-47b8-9084-272f5c328ba6")
 	)
 	(wire
 		(pts
@@ -1779,16 +1763,6 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 40.64) (xy 154.94 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "29e9b208-6f9a-41ae-8069-f276cc5e38fd")
-	)
-	(wire
-		(pts
 			(xy 63.5 67.31) (xy 63.5 66.04)
 		)
 		(stroke
@@ -1900,7 +1874,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 95.25) (xy 40.64 95.25)
+			(xy 54.61 95.25) (xy 50.8 95.25)
 		)
 		(stroke
 			(width 0)
@@ -2060,7 +2034,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 97.79) (xy 40.64 97.79)
+			(xy 54.61 97.79) (xy 50.8 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2330,6 +2304,16 @@
 	)
 	(wire
 		(pts
+			(xy 146.05 40.64) (xy 154.94 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c027a3c5-c208-4f61-9f38-89d233f53d06")
+	)
+	(wire
+		(pts
 			(xy 68.58 54.61) (xy 59.69 54.61)
 		)
 		(stroke
@@ -2447,18 +2431,6 @@
 			(type default)
 		)
 		(uuid "f9580d78-7ecf-47f3-b7da-9541217e1f94")
-	)
-	(rectangle
-		(start 77.47 60.96)
-		(end 104.14 97.79)
-		(stroke
-			(width 0.127)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 1a119dbb-4247-417d-a7cc-9a24a81aa805)
 	)
 	(rectangle
 		(start 54.61 83.82)
@@ -3098,18 +3070,6 @@
 		)
 		(uuid "e9f3173d-4930-4614-ad46-62b6be674359")
 	)
-	(label "SPI"
-		(at 99.06 97.79 0)
-		(effects
-			(font
-				(size 1.524 1.524)
-				(thickness 0.3048)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "ed444a88-bf59-4bce-91fe-dc107f9339f3")
-	)
 	(label "SDI "
 		(at 83.82 90.17 180)
 		(effects
@@ -3645,8 +3605,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4622e978-05c6-482d-9231-d8483b1fce61")
-		(property "Reference" "SW1"
-			(at 76.2 31.75 0)
+		(property "Reference" "Keypad"
+			(at 76.2 35.052 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3740,7 +3700,7 @@
 		(instances
 			(project ""
 				(path "/c45a0547-b391-4369-8860-03b02f0c93ed"
-					(reference "SW1")
+					(reference "Keypad")
 					(unit 1)
 				)
 			)
