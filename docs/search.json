@@ -25,7 +25,7 @@
     "href": "hardware.html#circuit-diagram",
     "title": "Hardware",
     "section": "Circuit Diagram",
-    "text": "Circuit Diagram\n\n\n\nCircuit Diagram"
+    "text": "Circuit Diagram\n\n\n\nCircuit Diagram, actual"
   },
   {
     "objectID": "hardware.html#bom",
@@ -116,7 +116,7 @@
     "href": "system-overview.html#block-diagram",
     "title": "Overview",
     "section": "Block Diagram",
-    "text": "Block Diagram"
+    "text": "Block Diagram\nBelow is a block diagram representing the entire (planned) project:\n\n\n\nPlanned System Block Diagram\n\n\nUnfortunately, due to unforeseen challenges (both within and outside the scope of the project), we did not get to complete the FPGA design of the project. Below is a block diagram representing how the project actually turned out:\n\n\n\nActual System Block Diagram"
   },
   {
     "objectID": "system-overview.html#what-is-new",
