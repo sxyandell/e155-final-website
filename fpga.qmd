@@ -28,17 +28,18 @@ All of these taps were then converted to 16-bit 2s-complement, and loaded into B
 
 
 ## FPGA Design Reality
-Due to unforeseen circumstances, the team had to rescope the project to greatly simplify the role of the FPGA in this project. Initially, the FIR filter was removed from the project entirely, leaving the FPGA to serve as a buffer between the MCU's square wave outputs and the DACs. The data that previously encoded the FIR filter cutoff frequency would instead be used to control output volume. So, the FPGA would read in the two square waves from the MCU at 44kHz, scale them by an amount proportional to the 4-bit volume value, and send this result over I2C to the two DACs to ultimately drive the two speakers with two square waves at the specified volume.
+Due to unforeseen circumstances, we had to rescope the project to greatly simplify the role of the FPGA in this project. Initially, the FIR filter was removed from the project entirely, leaving the FPGA to serve as a buffer between the MCU's square wave outputs and the DACs. The data that previously encoded the FIR filter cutoff frequency would instead be used to control output volume. So, the FPGA would read in the two square waves from the MCU at 44kHz, scale them by an amount proportional to the 4-bit volume value, and send this result over I2C to the two DACs to ultimately drive the two speakers with two square waves at the specified volume.
 
-Unfortunately, the microcontroller and hardware design aspects of the project took longer than expected, and the team did not complete the rescoped FPGA design.
+Unfortunately, the microcontroller and hardware design aspects of the project took longer than expected, and we did not complete the rescoped FPGA design.
 
 
 ## References
-[Piano Key Frequencies - Wikipedia](https://en.wikipedia.org/wiki/Piano_key_frequencies)
 
 [DSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io](https://www.hackster.io/whitney-knitter/dsp-for-fpga-simple-fir-filter-in-verilog-91208d)
 
 [MCP4725 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf)
+
+[Piano Key Frequencies - Wikipedia](https://en.wikipedia.org/wiki/Piano_key_frequencies)
 
 [Project PariVo, E155 2024](https://projectparivo.github.io/ProjectParivoPortfolio/currentStatus/fpgaDesign.html)
 
