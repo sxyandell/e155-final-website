@@ -2,4 +2,13 @@
 title: "References"
 ---
 
-
+- [Micro Ps Website](https://hmc-e155.github.io/)
+- [STM32L432KC Datasheet](https://hmc-e155.github.io/assets/doc/ds11451-stm32l432kc.pdf)
+- [STM32L432KC Reference Manual](https://hmc-e155.github.io/assets/doc/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [UPduino v3.1 & iCE40 UP5K Datasheet](https://hmc-e155.github.io/assets/doc/FPGA-DS-02008-2-0-iCE40-UltraPlus-Family-Data-Sheet.pdf)
+- [UPduino v3.1 & iCE40 UP5K Usage Guide](https://hmc-e155.github.io/assets/doc/FPGA-TN-02008-1-7-iCE40-Oscillator-Usage-Guide.pdf)
+- [Segger Embedded Studio](https://www.segger.com/products/development-tools/embedded-studio/)
+- [Lattice Radiant](https://www.latticesemi.com/latticeradiant)
+- [1528-1176-ND Slip Ring](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1845/1196_Web.pdf)
+- [MCP4725 DAC](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf)
+- [A3G4250DTR Gyroscope](https://www.st.com/resource/en/datasheet/a3g4250d.pdf)
