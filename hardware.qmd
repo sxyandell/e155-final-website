@@ -72,5 +72,17 @@ Below is the circuit diagram for our project. The keypad was implemented with 8 
 | Shipping         | 6.96   |
 | **Total**        | **38.01** |
 
+### Housing
+
+Below is the mechanical housing we built for the gyroscope and slip ring. The top part (the red and green cylinder) spins and has room for a soldered PCB inside. The bottom wooden box also has space for breadboards.
+
+{{< video docs/images/gyroUse.MOV >}}
+
+### References
+- [1528-1176-ND Datasheet](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1845/1196_Web.pdf)
+- [MCP4725 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf)
+- [A3G4250DTR Datasheet](https://www.st.com/resource/en/datasheet/a3g4250d.pdf)
+- [Housing CAD Files](https://github.com/sxyandell/s-m_microp_project/tree/main/mechanical)
+
 
 

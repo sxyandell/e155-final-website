@@ -4,7 +4,7 @@ title: "MCU Design"
 
 ## MCU Design Plan
 
-![STM32 Nucleo-32 board with an STM32L432KC MCU](\docs\images\stm32.jpeg)
+![STM32 Nucleo-32 board with an STM32L432KC MCU](\docs\images\stm32.jpeg){width=50%}
 
 
 
@@ -22,7 +22,7 @@ The goal of this project was to use the STM32 Nucleo-32 board with an STM32L432K
 
 #### 8-Key Keypad
 
-![Mechanical Keys and Housing](\docs\images\Keys.jpeg)
+![Mechanical Keys and Housing](\docs\images\Keys.jpeg){width=50%}
 
 
 The keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.
@@ -31,7 +31,7 @@ The keypad is read through the MCUs GPIO pins, with each key functioning as a sw
 
 #### A3G4250DTR Gyroscope
 
-![Gyroscope and Housing](docs\images\gyroHousing.jpeg)
+![Gyroscope and Housing](docs\images\gyroHousing.jpeg){width=75%}
 
 {{< video docs/images/gyroUse.MOV >}}
 {{< video docs/images/gyroResults.MOV >}}
