@@ -72,3 +72,16 @@ frequency for each key press. The MCU was also able
 to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally,
  we read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust
   filter parameters or other project functions.
+
+
+### References
+  
+- [STM32L432KC Datasheet](https://hmc-e155.github.io/assets/doc/ds11451-stm32l432kc.pdf)
+- [STM32L432KC Reference Manual](https://hmc-e155.github.io/assets/doc/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [UPduino v3.1 & iCE40 UP5K Datasheet](https://hmc-e155.github.io/assets/doc/FPGA-DS-02008-2-0-iCE40-UltraPlus-Family-Data-Sheet.pdf)
+- [UPduino v3.1 & iCE40 UP5K Usage Guide](https://hmc-e155.github.io/assets/doc/FPGA-TN-02008-1-7-iCE40-Oscillator-Usage-Guide.pdf)
+- [E155 Development Board](https://hmc-e155.github.io/assets/doc/E155%20Development%20Board%20Schematic.pdf)
+- [E155 Adapter Board](https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf)
+- [1528-1176-ND Datasheet](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1845/1196_Web.pdf)
+- [MCP4725 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf)
+- [A3G4250DTR Datasheet](https://www.st.com/resource/en/datasheet/a3g4250d.pdf)

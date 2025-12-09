@@ -46,7 +46,9 @@ The A3G4250D was new hardware. Prior coursework involved working with SPI and a 
 
 
 ## Circuit Diagram
-![Circuit Diagram, actual](docs\images\circuitdiagram_bw.png){width=75%, fig-align="center"}
+Below is the circuit diagram for our project. The keypad was implemented with 8 mechanical switch keys, represented in this schematic by a switch bank. Had we gotten to fully implement our FPGA design, 6 additional GPIO pins on the MCU would be used to transmit input data to the FPGA for processing.
+
+![Circuit Diagram](docs\images\circuitdiagram_bw.png){width=75%, fig-align="center"}
 
 ## BOM
 | Item                     | Part Number          | Quantity | Price (Raw) | Shipping | Total Price (w/ Tax) | Purpose                  |

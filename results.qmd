@@ -49,7 +49,6 @@ Keypad digital audio synthesis demonstration:
 {{< video docs/images/finalProject.MOV >}}
 
 
-
 ## ADC output
 The ADC output was printed to the terminal as the potentiometer in a simple voltage divider circuit was adjusted. With a resolution of 6 bits, the ADC output spanned from 0-63 as the voltage into the analog pin spanned from 0-3.3V. This value was updated every 500ms through polling, although this could have been made more frequent.
 

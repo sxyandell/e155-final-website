@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Spinning Synth: MCU + FPGA Audio System"
+  title: "Spinning Synth E155 Project"
   navbar:
     left:
       - href: index.qmd
