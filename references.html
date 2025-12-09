@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Spinning Synth: MCU + FPGA Audio System</title>
+<title>References – Spinning Synth E155 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,8 +80,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
+    <span class="navbar-title">Spinning Synth E155 Project</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -136,8 +139,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hardware" id="toc-hardware" class="nav-link active" data-scroll-target="#hardware">Hardware</a></li>
+  <li><a href="#software-and-tools" id="toc-software-and-tools" class="nav-link" data-scroll-target="#software-and-tools">Software and Tools</a></li>
+  <li><a href="#tutorials-technical-references" id="toc-tutorials-technical-references" class="nav-link" data-scroll-target="#tutorials-technical-references">Tutorials &amp; Technical References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -161,8 +172,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="hardware" class="level2">
+<h2 class="anchored" data-anchor-id="hardware">Hardware</h2>
+<ul>
+<li><a href="https://hmc-e155.github.io/assets/doc/ds11451-stm32l432kc.pdf">STM32L432KC Datasheet</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">STM32L432KC Reference Manual</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/FPGA-DS-02008-2-0-iCE40-UltraPlus-Family-Data-Sheet.pdf">UPduino v3.1 &amp; iCE40 UP5K Datasheet</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/FPGA-TN-02008-1-7-iCE40-Oscillator-Usage-Guide.pdf">UPduino v3.1 &amp; iCE40 UP5K Usage Guide</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/E155%20Development%20Board%20Schematic.pdf">E155 Development Board</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf">E155 Adapter Board</a></li>
+<li><a href="https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1845/1196_Web.pdf">1528-1176-ND Datasheet</a></li>
+<li><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf">MCP4725 Datasheet</a></li>
+<li><a href="https://www.st.com/resource/en/datasheet/a3g4250d.pdf">A3G4250DTR Datasheet</a></li>
+</ul>
+</section>
+<section id="software-and-tools" class="level2">
+<h2 class="anchored" data-anchor-id="software-and-tools">Software and Tools</h2>
+<ul>
+<li><a href="https://www.segger.com/products/development-tools/embedded-studio/">Segger Embedded Studio</a></li>
+<li><a href="https://www.latticesemi.com/latticeradiant">Lattice Radiant</a></li>
+</ul>
+</section>
+<section id="tutorials-technical-references" class="level2">
+<h2 class="anchored" data-anchor-id="tutorials-technical-references">Tutorials &amp; Technical References</h2>
+<ul>
+<li><a href="https://hmc-e155.github.io/">Micro Ps Website</a></li>
+<li><a href="https://projectparivo.github.io/ProjectParivoPortfolio/currentStatus/fpgaDesign.html">Project PariVo, E155 2024</a></li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.firwin.html">SciPy Signal Processing firwin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Piano_key_frequencies">Piano Key Frequencies - Wikipedia</a></li>
+<li><a href="https://www.hackster.io/whitney-knitter/dsp-for-fpga-simple-fir-filter-in-verilog-91208d">DSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -237,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/sxyandell\.github\.io\/e155-final-website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

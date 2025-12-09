@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MCU Design – Spinning Synth: MCU + FPGA Audio System</title>
+<title>MCU Design – Spinning Synth E155 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,14 +32,17 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,8 +82,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
+    <span class="navbar-title">Spinning Synth E155 Project</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -136,8 +141,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mcu-design-plan" id="toc-mcu-design-plan" class="nav-link active" data-scroll-target="#mcu-design-plan">MCU Design Plan</a>
+  <ul class="collapse">
+  <li><a href="#the-project-has-three-inputs" id="toc-the-project-has-three-inputs" class="nav-link" data-scroll-target="#the-project-has-three-inputs">The project has three inputs:</a></li>
+  <li><a href="#signal-generation" id="toc-signal-generation" class="nav-link" data-scroll-target="#signal-generation">Signal Generation</a></li>
+  <li><a href="#mcu-design-reality" id="toc-mcu-design-reality" class="nav-link" data-scroll-target="#mcu-design-reality">MCU Design reality</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -161,8 +178,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="mcu-design-plan" class="level2">
+<h2 class="anchored" data-anchor-id="mcu-design-plan">MCU Design Plan</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="\docs\images\stm32.jpeg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>STM32 Nucleo-32 board with an STM32L432KC MCU</figcaption>
+</figure>
+</div>
+<p>The goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output. All relevant information is communicated from the MCU to the FPGA over SPI.</p>
+<section id="the-project-has-three-inputs" class="level3">
+<h3 class="anchored" data-anchor-id="the-project-has-three-inputs">The project has three inputs:</h3>
+<section id="key-keypad" class="level4">
+<h4 class="anchored" data-anchor-id="key-keypad">8-Key Keypad</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="\docs\images\Keys.jpeg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Mechanical Keys and Housing</figcaption>
+</figure>
+</div>
+<p>The keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.</p>
+</section>
+<section id="a3g4250dtr-gyroscope" class="level4">
+<h4 class="anchored" data-anchor-id="a3g4250dtr-gyroscope">A3G4250DTR Gyroscope</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="docs\images\gyroHousing.jpeg" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Gyroscope and Housing</figcaption>
+</figure>
+</div>
+<p></p><div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/gyroUse.MOV"></video></div> <div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/gyroResults.MOV"></video></div> Gyroscope Demonstration<p></p>
+<p>The 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.</p>
+</section>
+<section id="k-ohm-potentiometer" class="level4">
+<h4 class="anchored" data-anchor-id="k-ohm-potentiometer">10k Ohm Potentiometer</h4>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/potenResults.MOV"></video></div>
+<p>The potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.</p>
+</section>
+</section>
+<section id="signal-generation" class="level3">
+<h3 class="anchored" data-anchor-id="signal-generation">Signal Generation</h3>
+<p>A pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.</p>
+</section>
+<section id="mcu-design-reality" class="level3">
+<h3 class="anchored" data-anchor-id="mcu-design-reality">MCU Design reality</h3>
+<p>In this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU by generating a square wave at the corresponding frequency for each key press. The MCU was also able to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://hmc-e155.github.io/assets/doc/ds11451-stm32l432kc.pdf">STM32L432KC Datasheet</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">STM32L432KC Reference Manual</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/FPGA-DS-02008-2-0-iCE40-UltraPlus-Family-Data-Sheet.pdf">UPduino v3.1 &amp; iCE40 UP5K Datasheet</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/FPGA-TN-02008-1-7-iCE40-Oscillator-Usage-Guide.pdf">UPduino v3.1 &amp; iCE40 UP5K Usage Guide</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/E155%20Development%20Board%20Schematic.pdf">E155 Development Board</a></li>
+<li><a href="https://hmc-e155.github.io/assets/doc/E155%20Breadboard%20Adapter%20Schematic.pdf">E155 Adapter Board</a></li>
+<li><a href="https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1845/1196_Web.pdf">1528-1176-ND Datasheet</a></li>
+<li><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf">MCP4725 Datasheet</a></li>
+<li><a href="https://www.st.com/resource/en/datasheet/a3g4250d.pdf">A3G4250DTR Datasheet</a></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -237,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/sxyandell\.github\.io\/e155-final-website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -565,6 +643,9 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>videojs(video_shortcode_videojs_video2);</script>
+<script>videojs(video_shortcode_videojs_video3);</script>
 
 
 

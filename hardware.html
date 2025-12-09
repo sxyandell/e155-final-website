@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hardware – Spinning Synth: MCU + FPGA Audio System</title>
+<title>Hardware – Spinning Synth E155 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,14 +32,17 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,8 +82,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
+    <span class="navbar-title">Spinning Synth E155 Project</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -141,9 +146,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#new-hardwarecomponents-description" id="toc-new-hardwarecomponents-description" class="nav-link active" data-scroll-target="#new-hardwarecomponents-description">New Hardware/Components Description</a></li>
+  <li><a href="#new-hardwarecomponents-description" id="toc-new-hardwarecomponents-description" class="nav-link active" data-scroll-target="#new-hardwarecomponents-description">New Hardware/Components Description</a>
+  <ul class="collapse">
+  <li><a href="#dac-mcp4725" id="toc-dac-mcp4725" class="nav-link" data-scroll-target="#dac-mcp4725">DAC (MCP4725)</a></li>
+  <li><a href="#slip-ring-1528-1176-nd" id="toc-slip-ring-1528-1176-nd" class="nav-link" data-scroll-target="#slip-ring-1528-1176-nd">Slip Ring (1528-1176-ND)</a></li>
+  <li><a href="#gyroscope-a3g4250dtr" id="toc-gyroscope-a3g4250dtr" class="nav-link" data-scroll-target="#gyroscope-a3g4250dtr">Gyroscope (A3G4250DTR)</a></li>
+  </ul></li>
   <li><a href="#circuit-diagram" id="toc-circuit-diagram" class="nav-link" data-scroll-target="#circuit-diagram">Circuit Diagram</a></li>
-  <li><a href="#bom" id="toc-bom" class="nav-link" data-scroll-target="#bom">BOM</a></li>
+  <li><a href="#bom" id="toc-bom" class="nav-link" data-scroll-target="#bom">BOM</a>
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#housing" id="toc-housing" class="nav-link" data-scroll-target="#housing">Housing</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -171,14 +186,217 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="new-hardwarecomponents-description" class="level2">
 <h2 class="anchored" data-anchor-id="new-hardwarecomponents-description">New Hardware/Components Description</h2>
+<p>The new hardware used in this project is a Digital-to-Analog Converter (DAC), Slip Ring, and Gyroscope</p>
+<section id="dac-mcp4725" class="level3">
+<h3 class="anchored" data-anchor-id="dac-mcp4725">DAC (MCP4725)</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="\docs\images\DAC.jpg" class="img-fluid figure-img"></p>
+<figcaption>MCP4725 DAC</figcaption>
+</figure>
+</div>
+<p>The DAC used in the project is the MCP4725, a single-channel 12-bit DAC with an integrated output buffer and on board nonvolatile EEPROM. It communicates using a two wire I2C interface. In our project the goal of the DAC was to communicate with the FPGA using I2C where the FPGA acts as the I2C primary device and the MCP4725 functions as the secondary device. THe FPGA would send a digital waveform to the DAC, which would convert it to an analog signal to drive a speaker. We had initially planned to use two DACs, each driving a speaker, to make two different sounds. However we were not able to get I2C communication working on the FPGA, and therefore the DACs could not be used in the final result of the project.</p>
+<p>The DAC is new hardware for the team, as we had not previously worked with digital to analog conversion or used a DAC to generate analog signals for sound output. In Lab 4, we had generated a square wave frequency and played sound through a speaker, but that was purely digital and did not involve analog waveforms. Additionally, we had not worked with I2C before.</p>
+</section>
+<section id="slip-ring-1528-1176-nd" class="level3">
+<h3 class="anchored" data-anchor-id="slip-ring-1528-1176-nd">Slip Ring (1528-1176-ND)</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="\docs\images\SR.jpg" class="img-fluid figure-img"></p>
+<figcaption>1528-1176-ND Slip Ring</figcaption>
+</figure>
+</div>
+<p>The slip ring used in this project was the 1528-1176-ND, a 22 mm rotary gold plated slip ring designed for 12 wires. It has 12 color coded 28 AWG wires, each capable of carrying up to 2 A at 240 VAC or 240 VDC. The slip ring also includes a 44 mm diameter flange with mounting holes and is rated for rotational speeds up to 300 RPM. The primary goal of the slip ring in this project was to provide a reliable electrical connection between the spinning gyroscope and the MCU. Because the gyroscope would be rotating, a standard wired connection would work. The slip ring enabled continuous data transfer while the sensor was in motion and we were able to get the gyroscope and slip ring reading data to the MCU.</p>
+<p>The slip ring was new to the team, as we had not previously used this type of rotating electrical connection. Working with it required consideration of noise, since slip rings can introduce electrical noise into measurements. In our project, the slip ring did introduce some noise, which required careful handling in the circuit and software to ensure accurate gyroscope readings.</p>
+</section>
+<section id="gyroscope-a3g4250dtr" class="level3">
+<h3 class="anchored" data-anchor-id="gyroscope-a3g4250dtr">Gyroscope (A3G4250DTR)</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="\docs\images\Gyro.jpg" class="img-fluid figure-img"></p>
+<figcaption>A3G4250DTR Gyroscope</figcaption>
+</figure>
+</div>
+<p>The gyroscope used in this project was the A3G4250D, a 3-axis angular rate sensor capable of measuring rotational motion with a full scale range of +/- 245 degrees per second. It provides 16 bit rate output data and 8-bit temperature reading through either an SPI or I2C digital interface. In this project, the gyroscope was configured to communicate over SPI, with the goal of it outputting 16 bit angular acceleration data to the MCU for use in later frequency calculations. Our project successfully achieved this functionality. The gyroscope was able to measure angular velocity, convert it to a 16-bit digital output, and transmit the data to the MCU reliably over the SPI bus. This data was then used by the MCU in frequency computations.</p>
+<p>The A3G4250D was new hardware. Prior coursework involved working with SPI and a simpler temperature sensor, but this project required us to go further by interpreting angular rate data and implementing continuous real time data capture over SPI.</p>
+</section>
 </section>
 <section id="circuit-diagram" class="level2">
 <h2 class="anchored" data-anchor-id="circuit-diagram">Circuit Diagram</h2>
+<p>Below is the circuit diagram for our project. The keypad was implemented with 8 mechanical switch keys, represented in this schematic by a switch bank. Had we gotten to fully implement our FPGA design, 6 additional GPIO pins on the MCU would be used to transmit input data to the FPGA for processing.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="docs\images\circuitdiagram_bw.png" class="img-fluid figure-img"></p>
+<figcaption>Circuit Diagram</figcaption>
+</figure>
+</div>
 </section>
 <section id="bom" class="level2">
 <h2 class="anchored" data-anchor-id="bom">BOM</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 17%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 18%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Part Number</th>
+<th>Quantity</th>
+<th>Price (Raw)</th>
+<th>Shipping</th>
+<th>Total Price (w/ Tax)</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gyroscope</td>
+<td>A3G4250DTR</td>
+<td>1</td>
+<td>15.98</td>
+<td>5.99</td>
+<td>21.97</td>
+<td>Wheel</td>
+</tr>
+<tr class="even">
+<td>12-wire Slip Ring</td>
+<td>1528-1176-ND</td>
+<td>1</td>
+<td>9.99</td>
+<td>0.97</td>
+<td>10.96</td>
+<td>Wheel</td>
+</tr>
+<tr class="odd">
+<td>DAC</td>
+<td>MCP4725A1T-E/CH</td>
+<td>4</td>
+<td>5.08</td>
+<td>–</td>
+<td>5.08</td>
+<td>Driving speaker</td>
+</tr>
+<tr class="even">
+<td>SMD adapters</td>
+<td>–</td>
+<td>3</td>
+<td>stockroom</td>
+<td>–</td>
+<td>–</td>
+<td>Mounting DAC &amp; gyro</td>
+</tr>
+<tr class="odd">
+<td>Potentiometer (volume)</td>
+<td>–</td>
+<td>1</td>
+<td>stockroom</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr class="even">
+<td>Capacitors, resistors</td>
+<td>–</td>
+<td>5</td>
+<td>stockroom</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr class="odd">
+<td>Speaker w/ amplifier</td>
+<td>–</td>
+<td>2</td>
+<td>digital lab</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr class="even">
+<td>Mechanical switch keys</td>
+<td>–</td>
+<td>8</td>
+<td>makerspace</td>
+<td>–</td>
+<td>–</td>
+<td>Keypad</td>
+</tr>
+<tr class="odd">
+<td>Plywood</td>
+<td>–</td>
+<td>1</td>
+<td>makerspace</td>
+<td>–</td>
+<td>–</td>
+<td>Wheel housing</td>
+</tr>
+<tr class="even">
+<td>4 wood screws</td>
+<td>–</td>
+<td>4</td>
+<td>stockroom</td>
+<td>–</td>
+<td>–</td>
+<td>Wheel housing</td>
+</tr>
+<tr class="odd">
+<td>PLA</td>
+<td>–</td>
+<td>8</td>
+<td>makerspace</td>
+<td>–</td>
+<td>–</td>
+<td>3D print wheel/keycaps</td>
+</tr>
+</tbody>
+</table>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pre-tax cost</td>
+<td>31.05</td>
+</tr>
+<tr class="even">
+<td>Shipping</td>
+<td>6.96</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>38.01</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="housing" class="level3">
+<h3 class="anchored" data-anchor-id="housing">Housing</h3>
+<p>Below is the mechanical housing we built for the gyroscope and slip ring. The top part (the red and green cylinder) spins and has room for a soldered PCB inside. The bottom wooden box also has space for breadboards.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/gyroUse.MOV"></video></div>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><a href="https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1845/1196_Web.pdf">1528-1176-ND Datasheet</a></li>
+<li><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf">MCP4725 Datasheet</a></li>
+<li><a href="https://www.st.com/resource/en/datasheet/a3g4250d.pdf">A3G4250DTR Datasheet</a></li>
+<li><a href="https://github.com/sxyandell/s-m_microp_project/tree/main/mechanical">Housing CAD Files</a></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -254,7 +472,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/sxyandell\.github\.io\/e155-final-website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -582,6 +800,7 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FPGA Design – Spinning Synth: MCU + FPGA Audio System</title>
+<title>FPGA Design – Spinning Synth E155 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,8 +80,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
+    <span class="navbar-title">Spinning Synth E155 Project</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -183,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Since the input is a square wave, the multiplication of each previous input with the corresponding tap should be relatively straightforward. The main source of complexity would be in the accumulation of all 51 taps. Executing all of this combinational logic would be challenge to fit within one clock cycle, giving rise to timing issues. As a result, this process would have to be pipelined, running over multiple clock cycles. Assuming the FPGA clock (based on HSOSC) is running at 40MHz and the FPGA is sampling the input at 44kHz, 900 processing cycles could fit within the time between samples. 900 cycles is more than enough to accumulate 51 16-bit precision taps. Thus, timing is not a concern with pipelining the FIR filter.</p>
 <p>In order to hold the FIR filter output steady while the FIR filter is generating the next output, a synchronous enabled flop would be used to control the input to and output from the FIR filter module. This flop would be enabled based on an input ready signal, based on the 44kHz sampling signal, and output ready signal, driven by the controller of the FIR filter datapath.</p>
-<p>There would be two instances of the FIR filter module, one for the MCU output driven by the keypad, and the other for the MCU output driven by the gyroscope. The outputs of the FIR filters then would be converted to 8-bit audio values, which would then be transmitted over The DACs would then be used to drive two speakers. I2C would be implemented using the built-in I2C IP on the iCE40. The MCP4725 DAC supports a standard 100 kHz communication frequency, as well as a 400 kHz fast mode and a 3.4 MHz high-speed mode. Additionally, the DAC must be sent 4 bytes (or 32 bits) in every transaction writing to the DAC Input Register. This means that the DAC fast mode speed of 400 kHz would be more than sufficient to drive audio at 44kHz.</p>
+<p>There would be two instances of the FIR filter module, one for the MCU output driven by the keypad, and the other for the MCU output driven by the gyroscope. The outputs of the FIR filters then would be converted to 8-bit audio values, which would then be transmitted over The DACs would then be used to drive two speakers. I2C would be implemented using the built-in I2C IP on the iCE40. The iCE40 can support up to 2 sets of I2C busses. The MCP4725 DAC supports a standard 100 kHz communication frequency, as well as a 400 kHz fast mode and a 3.4 MHz high-speed mode. Additionally, the DAC must be sent 4 bytes (or 32 bits) in every transaction writing to the DAC Input Register. This means that the DAC fast mode speed of 400 kHz would be more than sufficient to drive audio at 44kHz.</p>
 </section>
 <section id="filter-design" class="level2">
 <h2 class="anchored" data-anchor-id="filter-design">Filter Design</h2>
@@ -198,14 +201,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="fpga-design-reality" class="level2">
 <h2 class="anchored" data-anchor-id="fpga-design-reality">FPGA Design Reality</h2>
-<p>Due to unforeseen circumstances, the team had to rescope the project to greatly simplify the role of the FPGA in this project. Initially, the FIR filter was removed from the project entirely, leaving the FPGA to serve as a buffer between the MCU’s square wave outputs and the DACs. The data that previously encoded the FIR filter cutoff frequency would instead be used to control output volume. So, the FPGA would read in the two square waves from the MCU at 44kHz, scale them by an amount proportional to the 4-bit volume value, and send this result over I2C to the two DACs to ultimately drive the two speakers with two square waves at the specified volume.</p>
-<p>Unfortunately, the microcontroller and hardware design aspects of the project took longer than expected, and the team did not complete the rescoped FPGA design.</p>
+<p>Due to unforeseen circumstances, we had to rescope the project to greatly simplify the role of the FPGA in this project. Initially, the FIR filter was removed from the project entirely, leaving the FPGA to serve as a buffer between the MCU’s square wave outputs and the DACs. The data that previously encoded the FIR filter cutoff frequency would instead be used to control output volume. So, the FPGA would read in the two square waves from the MCU at 44kHz, scale them by an amount proportional to the 4-bit volume value, and send this result over I2C to the two DACs to ultimately drive the two speakers with two square waves at the specified volume.</p>
+<p>Unfortunately, the microcontroller and hardware design aspects of the project took longer than expected, and we did not complete the rescoped FPGA design.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<p><a href="https://en.wikipedia.org/wiki/Piano_key_frequencies">Piano Key Frequencies - Wikipedia</a></p>
 <p><a href="https://www.hackster.io/whitney-knitter/dsp-for-fpga-simple-fir-filter-in-verilog-91208d">DSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io</a></p>
 <p><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf">MCP4725 Datasheet</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Piano_key_frequencies">Piano Key Frequencies - Wikipedia</a></p>
 <p><a href="https://projectparivo.github.io/ProjectParivoPortfolio/currentStatus/fpgaDesign.html">Project PariVo, E155 2024</a></p>
 <p><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.firwin.html">SciPy Signal Processing firwin</a></p>
 
@@ -285,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/sxyandell\.github\.io\/e155-final-website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
