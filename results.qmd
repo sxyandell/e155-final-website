@@ -21,12 +21,11 @@ The MCU SystemClock is configured based on the PLL, which is configured to run a
 ## Gyro SPI
 The gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:
 
+![SPI Transaction with controller sending register for lower and upper bits of x-axis velocity reading (0xA8 and 0xAB), and receiving the values in those registers (0x24, 0xFF)](docs\images\DS1Z_QuickPrint8.png){width=30%, fig-align="center"}
 
-![SPI Transaction for gyroscope x-axis reading](docs\images\DS1Z_QuickPrint8.png){width=30%, fig-align="center"}
+![SPI Transaction with controller sending register for lower and upper bits of y-axis velocity reading (0xA9 and 0xAC), and receiving the values in those registers (0x00, 0xB1)](docs\images\DS1Z_QuickPrint9.png){width=30%, fig-align="center"}
 
-![SPI Transaction for gyroscope y-axis reading](docs\images\DS1Z_QuickPrint9.png){width=30%, fig-align="center"}
-
-![SPI Transaction for gyroscope z-axis reading](docs\images\DS1Z_QuickPrint10.png){width=30%, fig-align="center"}
+![SPI Transaction with controller sending register for lower and upper bits of z-axis velocity reading (0xAA and 0xAD), and receiving the values in those registers (0xEC, 0xFF)](docs\images\DS1Z_QuickPrint10.png){width=30%, fig-align="center"}
 
 
 ## MCU Frequency output

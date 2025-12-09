@@ -277,7 +277,7 @@
     "href": "results.html#gyro-spi",
     "title": "Results",
     "section": "Gyro SPI",
-    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction for gyroscope x-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope y-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope z-axis reading"
+    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of x-axis velocity reading (0xA8 and 0xAB), and receiving the values in those registers (0x24, 0xFF)\n\n\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of y-axis velocity reading (0xA9 and 0xAC), and receiving the values in those registers (0x00, 0xB1)\n\n\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of z-axis velocity reading (0xAA and 0xAD), and receiving the values in those registers (0xEC, 0xFF)"
   },
   {
     "objectID": "results.html#mcu-freq-output",
@@ -298,7 +298,7 @@
     "href": "results.html#mcu-frequency-output",
     "title": "Results",
     "section": "MCU Frequency output",
-    "text": "MCU Frequency output\nThe MCU freqiency out\n263 294 312 333 385 417 500 500"
+    "text": "MCU Frequency output\nThe MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were as follows:\n\nC4: 261 Hz desired, 263 Hz actual\nD4: 294 Hz desired, 294 Hz actual\nE4: 330 Hz desired, 312 Hz actual\nF4: 349 Hz desired, 333 Hz actual\nG4: 392 Hz desired, 385 Hz actual\nA4: 440 Hz desired, 417 Hz actual\nB4: 494 Hz desired, 500 Hz actual\nC5: 523 Hz desired, 500 Hz actual\n\nThe accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method – we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope’s built-in high pass filter. This may have given room for error in the frequency measurements. However, to achieve more accurate frequency measurements, we also could have reconfigured our timer ARR and PSC values to support a higher degree of precision."
   },
   {
     "objectID": "results.html#resources",
