@@ -5,6 +5,7 @@ title: "Hardware"
 ## New Hardware/Components Description
 
 ## Circuit Diagram
+![Circuit Diagram, actual](docs\images\circuitdiagram_bw.png){width=75%, fig-align="center"}
 
 ## BOM
 | Item                     | Part Number          | Quantity | Price (Raw) | Shipping | Total Price (w/ Tax) | Purpose                  |

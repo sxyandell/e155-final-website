@@ -7,9 +7,9 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home Page
+        text: Home
       - href: system-overview.qmd
-        text: System Overview
+        text: Overview
       - href: hardware.qmd
         text: Hardware
       - href: fpga.qmd

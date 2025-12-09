@@ -1,10 +1,21 @@
 ---
-title: "System Overview"
+title: "Overview"
 ---
 
 ## System Overview
 
 ## Block Diagram
+
+Below is a block diagram representing the entire (planned) project:
+
+![Planned System Block Diagram](docs\images\bd_planned.png){width=75%, fig-align="center"}
+
+Unfortunately, due to unforeseen challenges (both within and outside the scope of the project), we did not get to complete the FPGA design of the project. Below is a block diagram representing how the project actually turned out:
+
+![Actual System Block Diagram](docs\images\bd_actual.png){width=75%, fig-align="center"}
+
+
+
 
 ## What is New 
 

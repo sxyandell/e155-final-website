@@ -2,5 +2,5 @@
 title: "Acknowledgements"
 ---
 
-We thank Prof. Spencer and peers for feedback on design decisions.
+We thank Prof. Spencer and peers for feedback on design decisions. Also, thank you to the grutors for this class: Kavi, Troy, Vikram, and Neil for their support. 
 
