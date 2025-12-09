@@ -1,144 +1,17 @@
 [
   {
-    "objectID": "technical.html",
-    "href": "technical.html",
-    "title": "Technical Information",
+    "objectID": "team.html",
+    "href": "team.html",
+    "title": "Meet the Team!",
     "section": "",
-    "text": "This system produces two independent audio outputs, one driven by the gyroscope-derived baseline frequency and one driven by keypad+knob inputs. The MCU ingests user inputs, maps them to frequencies, and generates digital waveforms which the FPGA filters and processes. The final waveforms are converted to analog and amplified to the speakers.\n\n\n\n\n\n\n\nGyroscope to MCU: SPI, 8-bit samples (per project description)\nKeypad to MCU: GPIO matrix scanning\nKnobs to MCU: On-chip ADC channels (voltage from potentiometers)\nMCU to FPGA: SPI (waveform samples, control/status)\nFPGA to DACs: I2C (two channels for two speakers)"
+    "text": "Madeleine Kan is a senior engineering major at Harvey Mudd College. She is studying general engineering with a focus on computer engineering with biomedical applications. She has experience in supply chain process engineering, firmware engineering, and RTL design and verificaiton. In the spring of 2025, she worked as part of the UC Berkeley clinic team to upgrade the communication protocol for a low-cost air quality sensor. Since the start of 2024, she has worked in the Quantum Quasars Lab to develop an astronomical random number generator for Bell-type tests of quantum entanglement. She also has tutored for a variety of engineering courses and labs. She is part of the CMS Swim team, specializing in sprint freestyle and butterfly. In her free time, she likes to crochet, learn the piano, and spend time with her friends and family.\nLinks\nPersonal E155 Portfolio\n GitHub\n LinkedIn\n\nSarah is a current undergraduate student in Computer Science, Mathematics, and Economics, she is passionate about leveraging technology and analytical problem-solving to drive impactful solutions. Her experience spans software development, optimization, and data analysis, with projects ranging from building AI-powered applications to designing mathematical models for decision-making.\nShe is always eager to explore innovative applications of technology, connect with like-minded professionals, and contribute to projects that create meaningful impact.\nLinks\nPersonal E155 Portfolio\n GitHub\n LinkedIn"
   },
   {
-    "objectID": "technical.html#system-architecture",
-    "href": "technical.html#system-architecture",
-    "title": "Technical Information",
+    "objectID": "sarah.html",
+    "href": "sarah.html",
+    "title": "Spinning Synth E155 Project",
     "section": "",
-    "text": "This system produces two independent audio outputs, one driven by the gyroscope-derived baseline frequency and one driven by keypad+knob inputs. The MCU ingests user inputs, maps them to frequencies, and generates digital waveforms which the FPGA filters and processes. The final waveforms are converted to analog and amplified to the speakers.\n\n\n\n\n\n\n\nGyroscope to MCU: SPI, 8-bit samples (per project description)\nKeypad to MCU: GPIO matrix scanning\nKnobs to MCU: On-chip ADC channels (voltage from potentiometers)\nMCU to FPGA: SPI (waveform samples, control/status)\nFPGA to DACs: I2C (two channels for two speakers)"
-  },
-  {
-    "objectID": "technical.html#calculations-and-performance",
-    "href": "technical.html#calculations-and-performance",
-    "title": "Technical Information",
-    "section": "Calculations and Performance",
-    "text": "Calculations and Performance\n\nFrequency resolution: ( = )\nPCLK minimum speed (given): ( _{} = )\nLow-pass filter example: ( N = 4 )\nHigh-pass filter example: ( N = 8 )\nMultiplier estimate: Each one requires ( (N/2)_2 N ) multipliers\n\n( 2_2(4) + 4_2(8) = 4 + 12 = 16 ) complex 8-bit multipliers\n\n\nNotes: - Select sampling rate and FFT/window sizes to meet target frequency resolution and latency. - Ensure SPI bandwidth supports aggregate waveform/control traffic between MCU and FPGA. - I2C bus timing must accommodate two DAC channels at chosen audio sample rate."
-  },
-  {
-    "objectID": "technical.html#risk-elements",
-    "href": "technical.html#risk-elements",
-    "title": "Technical Information",
-    "section": "Risk Elements",
-    "text": "Risk Elements\n\nSlip ring + gyroscope signal integrity and noise are the top risk. The signal must remain readable at the target spin frequency; additional filtering and shielding may be necessary.\nScheduling and concurrency: The MCU must read keypad/gyro and stream/control audio at rates that keep both outputs continuous and within range, while allowing the FPGA adequate time for filtering.\nTuning filter parameters and stability: Filter orders and cutoff frequencies must be tuned to avoid audible artifacts and preserve musical intent."
-  },
-  {
-    "objectID": "results.html",
-    "href": "results.html",
-    "title": "Results",
-    "section": "",
-    "text": "Our original specifications were as follows:\n\nOne frequency output is controlled continuously with gyroscope, and frequency increases with rotational velocity\nBased on keypad input, 8 distinct frequencies can be played within 1% accuracy\nFrequency output from gyroscope and keypad are played at the same time\nVolume can be adjusted continuously\nLow and high pass filters function with cutoff frequency that can be adjusted continuously\nLPF has a cutoff frequency between 8 kHz and 12 kHz, with a resolution of 2.5 kHz (within 10% accuracy)\nSystem can handle frequencies from 60 Hz to 1100 Hz\n\nAt the midpoint checkoff, we re-scoped the project to eliminate the last 3 specifications. Of inital specifications, we achieved enough for proficiency. We were able to read the velocity of the gyroscope, read the value of a continuous range of voltages using a potentiometer + voltage divider and the ADC, and play 8 distinct frequencies based on keypad input within 1% accuracy. However, we did not get to the point of driving a speaker based on the rotational velocity of the gyroscope, nor did we get to interpret the reading of the ADC to control the volume. That being said, we had all of the building blocks for our design, at least on the MCU side."
-  },
-  {
-    "objectID": "results.html#key-results",
-    "href": "results.html#key-results",
-    "title": "Results",
-    "section": "",
-    "text": "Audio outputs: Two independent channels produced in real time\nFrequency mapping: Gyro-derived baseline and keypad-derived note frequencies"
-  },
-  {
-    "objectID": "results.html#measurements",
-    "href": "results.html#measurements",
-    "title": "Results",
-    "section": "Measurements",
-    "text": "Measurements"
-  },
-  {
-    "objectID": "results.html#discussion",
-    "href": "results.html#discussion",
-    "title": "Results",
-    "section": "Discussion",
-    "text": "Discussion"
-  },
-  {
-    "objectID": "media.html",
-    "href": "media.html",
-    "title": "Media",
-    "section": "",
-    "text": "Embed or link a short video showcasing the system in action."
-  },
-  {
-    "objectID": "media.html#demo-video",
-    "href": "media.html#demo-video",
-    "title": "Media",
-    "section": "",
-    "text": "Embed or link a short video showcasing the system in action."
-  },
-  {
-    "objectID": "media.html#photos",
-    "href": "media.html#photos",
-    "title": "Media",
-    "section": "Photos",
-    "text": "Photos\n\nFinal design photos (front, back, internals)\nBuild process photos\n\nAdd images to an images/ folder and reference them here, for example:"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
-    "section": "",
-    "text": "The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn a potentiometer. The project would generate real time audio controlled by a digital gyroscope, keypad, and a potentiometer. The system would produce two independent audio outputs, each corresponding to a distinct sound source. The gyroscope, mounted on a rotating device, determines a baseline sound output to one speaker based on its rotational frequency, while the keypad and potentiometer control the note and pitch of a second, independent sound output to a different speaker.\nOur project ended up being a functional prototype of the spinning synth. The 8-key keypad plays a C-major scale directly from the MCU to a speaker, the A3G4250DTR gyroscope is read over SPI, and the MCU uses its ADC to read the 10k Ohm potentiometer."
-  },
-  {
-    "objectID": "index.html#project-description-and-overview",
-    "href": "index.html#project-description-and-overview",
-    "title": "Project Overview",
-    "section": "",
-    "text": "The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source.\n\nThe gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker.\nThe keypad and knobs control the note and pitch of another sound output to a different speaker.\n\nThe system uses two core processing units: a microcontroller (MCU) and an FPGA.\n\nThe MCU handles all user input from the gyroscope and keypad using the I2C protocol. It performs frequency mapping, converting the measured angular velocity or note input into precise frequency values, and generates a corresponding digital waveform. These waveforms are transmitted to the FPGA over the Serial Peripheral Interface (SPI).\nOn the FPGA, waveforms from the MCU are sent to an external DAC and then amplifyed to speakers."
-  },
-  {
-    "objectID": "index.html#quick-links",
-    "href": "index.html#quick-links",
-    "title": "Project Overview",
-    "section": "Quick Links",
-    "text": "Quick Links\n\nTechnical Information\nMCU Design\nFPGA Design\nBill of Materials\nResults\nReferences\nTeam\nAcknowledgements"
-  },
-  {
-    "objectID": "bom.html",
-    "href": "bom.html",
-    "title": "Bill of Materials",
-    "section": "",
-    "text": "Item\nPart Number\nQuantity\nPrice (Raw)\nShipping\nTotal Price (w/ Tax)\nPurpose\n\n\n\n\nGyroscope\nA3G4250DTR\n1\n15.98\n5.99\n21.97\nWheel\n\n\n6-wire Slip Ring\n1528-1176-ND\n1\n9.99\n0.97\n10.96\nWheel\n\n\nDAC\nMCP4725A1T-E/CH\n4\n5.08\n–\n5.08\nDriving speaker\n\n\nSMD adapters\n–\n3\nstockroom\n–\n–\nMounting DAC & gyro\n\n\nPotentiometer (volume)\n–\n1\nstockroom\n–\n–\n–\n\n\nCapacitors, resistors\n–\n5\nstockroom\n–\n–\n–\n\n\nSpeaker w/ amplifier\n–\n2\ndigital lab\n–\n–\n–\n\n\nMechanical switch keys\n–\n8\nmakerspace\n–\n–\nKeypad\n\n\nPlywood\n–\n1\nmakerspace\n–\n–\nWheel housing\n\n\n4 wood screws\n–\n4\nstockroom\n–\n–\nWheel housing\n\n\nPLA\n–\n8\nmakerspace\n–\n–\n3D print wheel/keycaps\n\n\n\n\nSummary\n\n\n\nDescription\nAmount\n\n\n\n\nPre-tax cost\n38.01\n\n\nShipping\n6.99\n\n\nSales tax\n4.03\n\n\nTotal\n49.02"
-  },
-  {
-    "objectID": "acknowledgements.html",
-    "href": "acknowledgements.html",
-    "title": "Acknowledgements",
-    "section": "",
-    "text": "We thank Prof. Spencer and peers for feedback on design decisions. Also, thank you to the grutors for this class: Kavi, Troy, Vikram, and Neil for their support."
-  },
-  {
-    "objectID": "fpga.html",
-    "href": "fpga.html",
-    "title": "FPGA Design",
-    "section": "",
-    "text": "This project uses the iCE40 UP5K FPGA on the UPdino v3.1 development board. Originally, the FPGA was intended to act as a hardware accelerator for audio equalization. Specifically, the FPGA would apply a low-pass finite impule response (FIR) filter to a square wave generated by the MCU. The MCU would send two square waves to the FPGA–one of the frequency corresponding to the pressed key, and one of the frequency corresponding to the gyroscope’s angular speed– connected by wire.\nIn addition, the MCU would send the desired cutoff frequency of the low-pass filter, encoded with 4 bits, and also transmitted over wires. However, SPI also could have been used to transmit the cutoff frequency in order to increase resolution. The 4-bit cutoff frequency value would correspond to frequency spanning from 200 to 1600 Hz. This range was designed with the intended keypad range of middle C (~261 Hz) to C5 (~523 Hz), so 200-1600Hz should be an effective range of cutoff frequencies for the low-pass filter.\nInternally, a divided clock based on the HSOSC IP module would be used to generate a 44kHz signal to sample the audio inputs. This frequency was selected because 44kHz is double the highest audible audio frequency, making it a standard audio sampling frequency. The audio data would be sampled into a 51-bit wide shift register. Simultaneously, 51 16-bit taps corresponding to the cutoff frequency would be read in from BRAM. These taps would be convolved with the shift register of past inputs in order to calculate the current audio output. This would be accomplished using the sysDSP IP block SB_MAC16 (multiply and accumulate) primitive on the iCE40.\n\n\n\nBasic FIR filter design, Whitney Knitter via. Hackster.io\n\n\nSince the input is a square wave, the multiplication of each previous input with the corresponding tap should be relatively straightforward. The main source of complexity would be in the accumulation of all 51 taps. Executing all of this combinational logic would be challenge to fit within one clock cycle, giving rise to timing issues. As a result, this process would have to be pipelined, running over multiple clock cycles. Assuming the FPGA clock (based on HSOSC) is running at 40MHz and the FPGA is sampling the input at 44kHz, 900 processing cycles could fit within the time between samples. 900 cycles is more than enough to accumulate 51 16-bit precision taps. Thus, timing is not a concern with pipelining the FIR filter.\nIn order to hold the FIR filter output steady while the FIR filter is generating the next output, a synchronous enabled flop would be used to control the input to and output from the FIR filter module. This flop would be enabled based on an input ready signal, based on the 44kHz sampling signal, and output ready signal, driven by the controller of the FIR filter datapath.\nThere would be two instances of the FIR filter module, one for the MCU output driven by the keypad, and the other for the MCU output driven by the gyroscope. The outputs of the FIR filters then would be converted to 8-bit audio values, which would then be transmitted over The DACs would then be used to drive two speakers. I2C would be implemented using the built-in I2C IP on the iCE40. The iCE40 can support up to 2 sets of I2C busses. The MCP4725 DAC supports a standard 100 kHz communication frequency, as well as a 400 kHz fast mode and a 3.4 MHz high-speed mode. Additionally, the DAC must be sent 4 bytes (or 32 bits) in every transaction writing to the DAC Input Register. This means that the DAC fast mode speed of 400 kHz would be more than sufficient to drive audio at 44kHz."
-  },
-  {
-    "objectID": "fpga.html#fpga-overview-ice40-up5k-on-upduino-v3.1",
-    "href": "fpga.html#fpga-overview-ice40-up5k-on-upduino-v3.1",
-    "title": "FPGA Design",
-    "section": "",
-    "text": "The FPGA receives square waves from the MCU over wires. It sends those waves to external DACs over I2C (two channels for two independent speakers).\n\n\n\nI/O:\n\nSPI interface for waveform/control with MCU\nI2C master to two external DACs\n\n\n\n\n\n\nReceive digital waveform samples from MCU over SPI\nOutput two-channel digital audio via I2C to external DACs\nDAC analog outputs are amplified and sent to speakers"
-  },
-  {
-    "objectID": "mcu.html",
-    "href": "mcu.html",
-    "title": "MCU Design",
-    "section": "",
-    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
-    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
-  },
-  {
-    "objectID": "mcu.html#mcu-overview-stm32l432kc",
-    "href": "mcu.html#mcu-overview-stm32l432kc",
-    "title": "MCU Design",
-    "section": "",
-    "text": "The MCU reads three inputs to determine the two output frequencies:\n\nKeypad (8 keys) via GPIO scanning\nGyroscope via SPI (8-bit angular acceleration/velocity data)\nKnobs via on-chip ADC (continuous control for pitch/modulation)\n\nBased on these inputs, the MCU computes two desired frequencies to be played on two speakers. The MCU generates corresponding digital waveforms and communicates with the FPGA over SPI for filtering and additional DSP.\n\n\n\nInput acquisition: GPIO keypad scan, SPI gyro reads, ADC sampling (knobs)\nFrequency mapping: Key-to-frequency and angular velocity-to-frequency conversions\nWaveform generation: Digital oscillators at target frequencies\nStreaming/control to FPGA via SPI\nReceiving filtered waveforms/status from FPGA\n\n\n\n\nA pin on the MCU is connected to a timer associated with one of the two target frequencies. The timer is toggled at a rate fast enough that the resulting composite output sounds like the sum of the two notes, while remaining slow enough for the FPGA to sample and filter both components effectively. This balances perceptual audio quality with FPGA processing constraints.\n\n\n\n\nSPI: Gyroscope reads, waveform/control data exchange with FPGA\nGPIO: 8-key keypad matrix\nADC: Knob voltages (modulation, pitch bend, filter control, etc.)"
+    "text": "Sarah is a current undergraduate student in Computer Science, Mathematics, and Economics, she is passionate about leveraging technology and analytical problem-solving to drive impactful solutions. Her experience spans software development, optimization, and data analysis, with projects ranging from building AI-powered applications to designing mathematical models for decision-making.\nShe is always eager to explore innovative applications of technology, connect with like-minded professionals, and contribute to projects that create meaningful impact.\nLinks\nPersonal E155 Portfolio\n GitHub\n LinkedIn"
   },
   {
     "objectID": "references.html",
@@ -148,18 +21,88 @@
     "text": "STM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\nE155 Development Board\nE155 Adapter Board\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
   },
   {
-    "objectID": "references.html#cited-works",
-    "href": "references.html#cited-works",
+    "objectID": "references.html#hardware",
+    "href": "references.html#hardware",
     "title": "References",
-    "section": "Cited Works",
-    "text": "Cited Works\nThis page uses the site bibliography (references.bib). Example citations:\n\nSTM32L432 MCU datasheet (STM32L432KC Datasheet 2018)\nLattice iCE40 UltraPlus FPGA (iCE40 UltraPlus Family Data Sheet 2017)\nQuarto documentation (Quarto Documentation 2025)"
+    "section": "",
+    "text": "STM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\nE155 Development Board\nE155 Adapter Board\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
   },
   {
-    "objectID": "references.html#links",
-    "href": "references.html#links",
+    "objectID": "references.html#software-and-tools",
+    "href": "references.html#software-and-tools",
     "title": "References",
-    "section": "Links",
-    "text": "Links\n\nSTM32 Nucleo-32 (NUCLEO-L432KC) — see vendor page\nUPduino v3.1 board resources — see vendor page\nKiCad EDA tool — see project page"
+    "section": "Software and Tools",
+    "text": "Software and Tools\n\nSegger Embedded Studio\nLattice Radiant"
+  },
+  {
+    "objectID": "references.html#tutorials-technical-references",
+    "href": "references.html#tutorials-technical-references",
+    "title": "References",
+    "section": "Tutorials & Technical References",
+    "text": "Tutorials & Technical References\n\nMicro Ps Website\nProject PariVo, E155 2024\nSciPy Signal Processing firwin\nPiano Key Frequencies - Wikipedia\nDSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io"
+  },
+  {
+    "objectID": "madeleine.html",
+    "href": "madeleine.html",
+    "title": "Spinning Synth E155 Project",
+    "section": "",
+    "text": "Madeleine Kan is a senior engineering major at Harvey Mudd College. She is studying general engineering with a focus on computer engineering with biomedical applications. She has experience in supply chain process engineering, firmware engineering, and RTL design and verificaiton. In the spring of 2025, she worked as part of the UC Berkeley clinic team to upgrade the communication protocol for a low-cost air quality sensor. Since the start of 2024, she has worked in the Quantum Quasars Lab to develop an astronomical random number generator for Bell-type tests of quantum entanglement. She also has tutored for a variety of engineering courses and labs. She is part of the CMS Swim team, specializing in sprint freestyle and butterfly. In her free time, she likes to crochet, learn the piano, and spend time with her friends and family.\nLinks\nPersonal E155 Portfolio\n GitHub\n LinkedIn"
+  },
+  {
+    "objectID": "hardware.html",
+    "href": "hardware.html",
+    "title": "Hardware",
+    "section": "",
+    "text": "The new hardware used in this project is a Digital-to-Analog Converter (DAC), Slip Ring, and Gyroscope\n\n\n\n\n\nMCP4725 DAC\n\n\nThe DAC used in the project is the MCP4725, a single-channel 12-bit DAC with an integrated output buffer and on board nonvolatile EEPROM. It communicates using a two wire I2C interface. In our project the goal of the DAC was to communicate with the FPGA using I2C where the FPGA acts as the I2C primary device and the MCP4725 functions as the secondary device. THe FPGA would send a digital waveform to the DAC, which would convert it to an analog signal to drive a speaker. We had initially planned to use two DACs, each driving a speaker, to make two different sounds. However we were not able to get I2C communication working on the FPGA, and therefore the DACs could not be used in the final result of the project.\nThe DAC is new hardware for the team, as we had not previously worked with digital to analog conversion or used a DAC to generate analog signals for sound output. In Lab 4, we had generated a square wave frequency and played sound through a speaker, but that was purely digital and did not involve analog waveforms. Additionally, we had not worked with I2C before.\n\n\n\n\n\n\n1528-1176-ND Slip Ring\n\n\nThe slip ring used in this project was the 1528-1176-ND, a 22 mm rotary gold plated slip ring designed for 12 wires. It has 12 color coded 28 AWG wires, each capable of carrying up to 2 A at 240 VAC or 240 VDC. The slip ring also includes a 44 mm diameter flange with mounting holes and is rated for rotational speeds up to 300 RPM. The primary goal of the slip ring in this project was to provide a reliable electrical connection between the spinning gyroscope and the MCU. Because the gyroscope would be rotating, a standard wired connection would work. The slip ring enabled continuous data transfer while the sensor was in motion and we were able to get the gyroscope and slip ring reading data to the MCU.\nThe slip ring was new to the team, as we had not previously used this type of rotating electrical connection. Working with it required consideration of noise, since slip rings can introduce electrical noise into measurements. In our project, the slip ring did introduce some noise, which required careful handling in the circuit and software to ensure accurate gyroscope readings.\n\n\n\n\n\n\nA3G4250DTR Gyroscope\n\n\nThe gyroscope used in this project was the A3G4250D, a 3-axis angular rate sensor capable of measuring rotational motion with a full scale range of +/- 245 degrees per second. It provides 16 bit rate output data and 8-bit temperature reading through either an SPI or I2C digital interface. In this project, the gyroscope was configured to communicate over SPI, with the goal of it outputting 16 bit angular acceleration data to the MCU for use in later frequency calculations. Our project successfully achieved this functionality. The gyroscope was able to measure angular velocity, convert it to a 16-bit digital output, and transmit the data to the MCU reliably over the SPI bus. This data was then used by the MCU in frequency computations.\nThe A3G4250D was new hardware. Prior coursework involved working with SPI and a simpler temperature sensor, but this project required us to go further by interpreting angular rate data and implementing continuous real time data capture over SPI."
+  },
+  {
+    "objectID": "hardware.html#new-hardwarecomponents-description",
+    "href": "hardware.html#new-hardwarecomponents-description",
+    "title": "Hardware",
+    "section": "",
+    "text": "The new hardware used in this project is a Digital-to-Analog Converter (DAC), Slip Ring, and Gyroscope\n\n\n\n\n\nMCP4725 DAC\n\n\nThe DAC used in the project is the MCP4725, a single-channel 12-bit DAC with an integrated output buffer and on board nonvolatile EEPROM. It communicates using a two wire I2C interface. In our project the goal of the DAC was to communicate with the FPGA using I2C where the FPGA acts as the I2C primary device and the MCP4725 functions as the secondary device. THe FPGA would send a digital waveform to the DAC, which would convert it to an analog signal to drive a speaker. We had initially planned to use two DACs, each driving a speaker, to make two different sounds. However we were not able to get I2C communication working on the FPGA, and therefore the DACs could not be used in the final result of the project.\nThe DAC is new hardware for the team, as we had not previously worked with digital to analog conversion or used a DAC to generate analog signals for sound output. In Lab 4, we had generated a square wave frequency and played sound through a speaker, but that was purely digital and did not involve analog waveforms. Additionally, we had not worked with I2C before.\n\n\n\n\n\n\n1528-1176-ND Slip Ring\n\n\nThe slip ring used in this project was the 1528-1176-ND, a 22 mm rotary gold plated slip ring designed for 12 wires. It has 12 color coded 28 AWG wires, each capable of carrying up to 2 A at 240 VAC or 240 VDC. The slip ring also includes a 44 mm diameter flange with mounting holes and is rated for rotational speeds up to 300 RPM. The primary goal of the slip ring in this project was to provide a reliable electrical connection between the spinning gyroscope and the MCU. Because the gyroscope would be rotating, a standard wired connection would work. The slip ring enabled continuous data transfer while the sensor was in motion and we were able to get the gyroscope and slip ring reading data to the MCU.\nThe slip ring was new to the team, as we had not previously used this type of rotating electrical connection. Working with it required consideration of noise, since slip rings can introduce electrical noise into measurements. In our project, the slip ring did introduce some noise, which required careful handling in the circuit and software to ensure accurate gyroscope readings.\n\n\n\n\n\n\nA3G4250DTR Gyroscope\n\n\nThe gyroscope used in this project was the A3G4250D, a 3-axis angular rate sensor capable of measuring rotational motion with a full scale range of +/- 245 degrees per second. It provides 16 bit rate output data and 8-bit temperature reading through either an SPI or I2C digital interface. In this project, the gyroscope was configured to communicate over SPI, with the goal of it outputting 16 bit angular acceleration data to the MCU for use in later frequency calculations. Our project successfully achieved this functionality. The gyroscope was able to measure angular velocity, convert it to a 16-bit digital output, and transmit the data to the MCU reliably over the SPI bus. This data was then used by the MCU in frequency computations.\nThe A3G4250D was new hardware. Prior coursework involved working with SPI and a simpler temperature sensor, but this project required us to go further by interpreting angular rate data and implementing continuous real time data capture over SPI."
+  },
+  {
+    "objectID": "hardware.html#circuit-diagram",
+    "href": "hardware.html#circuit-diagram",
+    "title": "Hardware",
+    "section": "Circuit Diagram",
+    "text": "Circuit Diagram\nBelow is the circuit diagram for our project. The keypad was implemented with 8 mechanical switch keys, represented in this schematic by a switch bank. Had we gotten to fully implement our FPGA design, 6 additional GPIO pins on the MCU would be used to transmit input data to the FPGA for processing.\n\n\n\nCircuit Diagram"
+  },
+  {
+    "objectID": "hardware.html#bom",
+    "href": "hardware.html#bom",
+    "title": "Hardware",
+    "section": "BOM",
+    "text": "BOM\n\n\n\n\n\n\n\n\n\n\n\n\nItem\nPart Number\nQuantity\nPrice (Raw)\nShipping\nTotal Price (w/ Tax)\nPurpose\n\n\n\n\nGyroscope\nA3G4250DTR\n1\n15.98\n5.99\n21.97\nWheel\n\n\n12-wire Slip Ring\n1528-1176-ND\n1\n9.99\n0.97\n10.96\nWheel\n\n\nDAC\nMCP4725A1T-E/CH\n4\n5.08\n–\n5.08\nDriving speaker\n\n\nSMD adapters\n–\n3\nstockroom\n–\n–\nMounting DAC & gyro\n\n\nPotentiometer (volume)\n–\n1\nstockroom\n–\n–\n–\n\n\nCapacitors, resistors\n–\n5\nstockroom\n–\n–\n–\n\n\nSpeaker w/ amplifier\n–\n2\ndigital lab\n–\n–\n–\n\n\nMechanical switch keys\n–\n8\nmakerspace\n–\n–\nKeypad\n\n\nPlywood\n–\n1\nmakerspace\n–\n–\nWheel housing\n\n\n4 wood screws\n–\n4\nstockroom\n–\n–\nWheel housing\n\n\nPLA\n–\n8\nmakerspace\n–\n–\n3D print wheel/keycaps\n\n\n\n\nSummary\n\n\n\nDescription\nAmount\n\n\n\n\nPre-tax cost\n31.05\n\n\nShipping\n6.96\n\n\nTotal\n38.01\n\n\n\n\n\nHousing\nBelow is the mechanical housing we built for the gyroscope and slip ring. The top part (the red and green cylinder) spins and has room for a soldered PCB inside. The bottom wooden box also has space for breadboards.\n\n\n\nReferences\n\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet\nHousing CAD Files"
+  },
+  {
+    "objectID": "acknowledgements.html",
+    "href": "acknowledgements.html",
+    "title": "Acknowledgements",
+    "section": "",
+    "text": "Thank you so much to Prof. Spencer, Xavier, Jacob, Kavi, Troy, Vikram, Neil, and all of our classmates! Your support has been so helpful in our learning throughout this semester."
+  },
+  {
+    "objectID": "fpga.html",
+    "href": "fpga.html",
+    "title": "FPGA Design",
+    "section": "",
+    "text": "This project uses the iCE40 UP5K FPGA on the UPdino v3.1 development board. Originally, the FPGA was intended to act as a hardware accelerator for audio equalization. Specifically, the FPGA would apply a low-pass finite impule response (FIR) filter to a square wave generated by the MCU. The MCU would send two square waves to the FPGA–one of the frequency corresponding to the pressed key, and one of the frequency corresponding to the gyroscope’s angular speed– connected by wire.\nIn addition, the MCU would send the desired cutoff frequency of the low-pass filter, encoded with 4 bits, and also transmitted over wires. However, SPI also could have been used to transmit the cutoff frequency in order to increase resolution. The 4-bit cutoff frequency value would correspond to frequency spanning from 200 to 1600 Hz. This range was designed with the intended keypad range of middle C (~261 Hz) to C5 (~523 Hz), so 200-1600Hz should be an effective range of cutoff frequencies for the low-pass filter.\nInternally, a divided clock based on the HSOSC IP module would be used to generate a 44kHz signal to sample the audio inputs. This frequency was selected because 44kHz is double the highest audible audio frequency, making it a standard audio sampling frequency. The audio data would be sampled into a 51-bit wide shift register. Simultaneously, 51 16-bit taps corresponding to the cutoff frequency would be read in from BRAM. These taps would be convolved with the shift register of past inputs in order to calculate the current audio output. This would be accomplished using the sysDSP IP block SB_MAC16 (multiply and accumulate) primitive on the iCE40.\n\n\n\nBasic FIR filter design, Whitney Knitter via. Hackster.io\n\n\nSince the input is a square wave, the multiplication of each previous input with the corresponding tap should be relatively straightforward. The main source of complexity would be in the accumulation of all 51 taps. Executing all of this combinational logic would be challenge to fit within one clock cycle, giving rise to timing issues. As a result, this process would have to be pipelined, running over multiple clock cycles. Assuming the FPGA clock (based on HSOSC) is running at 40MHz and the FPGA is sampling the input at 44kHz, 900 processing cycles could fit within the time between samples. 900 cycles is more than enough to accumulate 51 16-bit precision taps. Thus, timing is not a concern with pipelining the FIR filter.\nIn order to hold the FIR filter output steady while the FIR filter is generating the next output, a synchronous enabled flop would be used to control the input to and output from the FIR filter module. This flop would be enabled based on an input ready signal, based on the 44kHz sampling signal, and output ready signal, driven by the controller of the FIR filter datapath.\nThere would be two instances of the FIR filter module, one for the MCU output driven by the keypad, and the other for the MCU output driven by the gyroscope. The outputs of the FIR filters then would be converted to 8-bit audio values, which would then be transmitted over The DACs would then be used to drive two speakers. I2C would be implemented using the built-in I2C IP on the iCE40. The iCE40 can support up to 2 sets of I2C busses. The MCP4725 DAC supports a standard 100 kHz communication frequency, as well as a 400 kHz fast mode and a 3.4 MHz high-speed mode. Additionally, the DAC must be sent 4 bytes (or 32 bits) in every transaction writing to the DAC Input Register. This means that the DAC fast mode speed of 400 kHz would be more than sufficient to drive audio at 44kHz."
+  },
+  {
+    "objectID": "fpga.html#fpga-design-plan",
+    "href": "fpga.html#fpga-design-plan",
+    "title": "FPGA Design",
+    "section": "",
+    "text": "This project uses the iCE40 UP5K FPGA on the UPdino v3.1 development board. Originally, the FPGA was intended to act as a hardware accelerator for audio equalization. Specifically, the FPGA would apply a low-pass finite impule response (FIR) filter to a square wave generated by the MCU. The MCU would send two square waves to the FPGA–one of the frequency corresponding to the pressed key, and one of the frequency corresponding to the gyroscope’s angular speed– connected by wire.\nIn addition, the MCU would send the desired cutoff frequency of the low-pass filter, encoded with 4 bits, and also transmitted over wires. However, SPI also could have been used to transmit the cutoff frequency in order to increase resolution. The 4-bit cutoff frequency value would correspond to frequency spanning from 200 to 1600 Hz. This range was designed with the intended keypad range of middle C (~261 Hz) to C5 (~523 Hz), so 200-1600Hz should be an effective range of cutoff frequencies for the low-pass filter.\nInternally, a divided clock based on the HSOSC IP module would be used to generate a 44kHz signal to sample the audio inputs. This frequency was selected because 44kHz is double the highest audible audio frequency, making it a standard audio sampling frequency. The audio data would be sampled into a 51-bit wide shift register. Simultaneously, 51 16-bit taps corresponding to the cutoff frequency would be read in from BRAM. These taps would be convolved with the shift register of past inputs in order to calculate the current audio output. This would be accomplished using the sysDSP IP block SB_MAC16 (multiply and accumulate) primitive on the iCE40.\n\n\n\nBasic FIR filter design, Whitney Knitter via. Hackster.io\n\n\nSince the input is a square wave, the multiplication of each previous input with the corresponding tap should be relatively straightforward. The main source of complexity would be in the accumulation of all 51 taps. Executing all of this combinational logic would be challenge to fit within one clock cycle, giving rise to timing issues. As a result, this process would have to be pipelined, running over multiple clock cycles. Assuming the FPGA clock (based on HSOSC) is running at 40MHz and the FPGA is sampling the input at 44kHz, 900 processing cycles could fit within the time between samples. 900 cycles is more than enough to accumulate 51 16-bit precision taps. Thus, timing is not a concern with pipelining the FIR filter.\nIn order to hold the FIR filter output steady while the FIR filter is generating the next output, a synchronous enabled flop would be used to control the input to and output from the FIR filter module. This flop would be enabled based on an input ready signal, based on the 44kHz sampling signal, and output ready signal, driven by the controller of the FIR filter datapath.\nThere would be two instances of the FIR filter module, one for the MCU output driven by the keypad, and the other for the MCU output driven by the gyroscope. The outputs of the FIR filters then would be converted to 8-bit audio values, which would then be transmitted over The DACs would then be used to drive two speakers. I2C would be implemented using the built-in I2C IP on the iCE40. The iCE40 can support up to 2 sets of I2C busses. The MCP4725 DAC supports a standard 100 kHz communication frequency, as well as a 400 kHz fast mode and a 3.4 MHz high-speed mode. Additionally, the DAC must be sent 4 bytes (or 32 bits) in every transaction writing to the DAC Input Register. This means that the DAC fast mode speed of 400 kHz would be more than sufficient to drive audio at 44kHz."
+  },
+  {
+    "objectID": "fpga.html#filter-design",
+    "href": "fpga.html#filter-design",
+    "title": "FPGA Design",
+    "section": "Filter Design",
+    "text": "Filter Design\nThe FIR low-pass filter was designed to have 51 taps using the window method, as implemented by the firwin function in the SciPy Signal Processing library. This number was determined experimentally. Through trials with a varying number of taps, 51 was one of the lowest numbers where the audio filtering was noticeable. The 51 taps were then calculated for 15 cutoff frequencies, spanning from 200 Hz to 1.6 kHz.\n\n\n\nFIR low-pass filter taps vs cutoff frequency\n\n\nAll of these taps were then converted to 16-bit 2s-complement, and loaded into BRAM. An itial idea was to calculate the 51 taps using lines of best fit (selected by cutoff frequency), but the necessary precision would have required floating-point arithmetic, which is not supported on the FPGA."
   },
   {
     "objectID": "fpga.html#fpga-design-reality",
@@ -176,81 +119,46 @@
     "text": "References\nDSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io\nMCP4725 Datasheet\nPiano Key Frequencies - Wikipedia\nProject PariVo, E155 2024\nSciPy Signal Processing firwin"
   },
   {
-    "objectID": "madeleine.html",
-    "href": "madeleine.html",
-    "title": "Spinning Synth: MCU + FPGA Audio System",
-    "section": "",
-    "text": "Madeleine Kan is a senior engineering major at Harvey Mudd College. She is studying general engineering with a focus on computer engineering with biomedical applications. She has experience in supply chain process engineering, firmware engineering, and RTL design and verificaiton. In the spring of 2025, she worked as part of the UC Berkeley clinic team to upgrade the communication protocol for a low-cost air quality sensor. Since the start of 2024, she has worked in the Quantum Quasars Lab to develop an astronomical random number generator for Bell-type tests of quantum entanglement. She also has tutored for a variety of engineering courses and labs. She is part of the CMS Swim team, specializing in sprint freestyle and butterfly. In her free time, she likes to crochet, learn the piano, and spend time with her friends and family.\nLinks\nPersonal E155 Portfolio\n GitHub\n LinkedIn"
-  },
-  {
-    "objectID": "sarah.html",
-    "href": "sarah.html",
-    "title": "Spinning Synth: MCU + FPGA Audio System",
-    "section": "",
-    "text": "Sarah is a current undergraduate student in Computer Science, Mathematics, and Economics, she is passionate about leveraging technology and analytical problem-solving to drive impactful solutions. Her experience spans software development, optimization, and data analysis, with projects ranging from building AI-powered applications to designing mathematical models for decision-making.\nShe is always eager to explore innovative applications of technology, connect with like-minded professionals, and contribute to projects that create meaningful impact.\nLinks\n GitHub\n LinkedIn"
-  },
-  {
-    "objectID": "index.html#github-repository",
-    "href": "index.html#github-repository",
-    "title": "Project Overview",
-    "section": "GitHub Repository",
-    "text": "GitHub Repository\nGitHub Repository"
-  },
-  {
-    "objectID": "index.html#video",
-    "href": "index.html#video",
-    "title": "Home",
-    "section": "Video",
-    "text": "Video"
-  },
-  {
-    "objectID": "index.html#link-to-github",
-    "href": "index.html#link-to-github",
-    "title": "Home",
-    "section": "Link to GitHub",
-    "text": "Link to GitHub\nProject GitHub Repository"
-  },
-  {
-    "objectID": "system-overview.html#block-diagram",
-    "href": "system-overview.html#block-diagram",
-    "title": "Overview",
-    "section": "Block Diagram",
-    "text": "Block Diagram\nBelow is a block diagram representing the entire (planned) project:\n\n\n\nPlanned System Block Diagram\n\n\nUnfortunately, due to unforeseen challenges (both within and outside the scope of the project), we did not get to complete the FPGA design of the project. Below is a block diagram representing how the project actually turned out:\n\n\n\nActual System Block Diagram"
-  },
-  {
-    "objectID": "system-overview.html#what-is-new-compared-to-previous-learning",
-    "href": "system-overview.html#what-is-new-compared-to-previous-learning",
-    "title": "System Overview",
-    "section": "What is New (Compared to Previous Learning)",
-    "text": "What is New (Compared to Previous Learning)"
-  },
-  {
-    "objectID": "hardware.html#circuit-diagram",
-    "href": "hardware.html#circuit-diagram",
-    "title": "Hardware",
-    "section": "Circuit Diagram",
-    "text": "Circuit Diagram\n\n\n\nCircuit Diagram, actual"
-  },
-  {
-    "objectID": "hardware.html#bom",
-    "href": "hardware.html#bom",
-    "title": "Hardware",
-    "section": "BOM",
-    "text": "BOM\n\n\n\n\n\n\n\n\n\n\n\n\nItem\nPart Number\nQuantity\nPrice (Raw)\nShipping\nTotal Price (w/ Tax)\nPurpose\n\n\n\n\nGyroscope\nA3G4250DTR\n1\n15.98\n5.99\n21.97\nWheel\n\n\n6-wire Slip Ring\n1528-1176-ND\n1\n9.99\n0.97\n10.96\nWheel\n\n\nDAC\nMCP4725A1T-E/CH\n4\n5.08\n–\n5.08\nDriving speaker\n\n\nSMD adapters\n–\n3\nstockroom\n–\n–\nMounting DAC & gyro\n\n\nPotentiometer (volume)\n–\n1\nstockroom\n–\n–\n–\n\n\nCapacitors, resistors\n–\n5\nstockroom\n–\n–\n–\n\n\nSpeaker w/ amplifier\n–\n2\ndigital lab\n–\n–\n–\n\n\nMechanical switch keys\n–\n8\nmakerspace\n–\n–\nKeypad\n\n\nPlywood\n–\n1\nmakerspace\n–\n–\nWheel housing\n\n\n4 wood screws\n–\n4\nstockroom\n–\n–\nWheel housing\n\n\nPLA\n–\n8\nmakerspace\n–\n–\n3D print wheel/keycaps\n\n\n\n\nSummary\n\n\n\nDescription\nAmount\n\n\n\n\nPre-tax cost\n38.01\n\n\nShipping\n6.99\n\n\nSales tax\n4.03\n\n\nTotal\n49.02"
-  },
-  {
-    "objectID": "index.html#abstract",
-    "href": "index.html#abstract",
-    "title": "Home",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Spinning Synth E155 Project",
     "section": "",
     "text": "The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn a potentiometer. The project would generate real time audio controlled by a digital gyroscope, keypad, and a potentiometer. The system would produce two independent audio outputs, each corresponding to a distinct sound source. The gyroscope, mounted on a rotating device, determines a baseline sound output to one speaker based on its rotational frequency, while the keypad and potentiometer control the note and pitch of a second, independent sound output to a different speaker.\nOur project ended up being a functional prototype of the spinning synth. The 8-key keypad plays a C-major scale directly from the MCU to a speaker, the A3G4250DTR gyroscope is read over SPI, and the MCU uses its ADC to read the 10k Ohm potentiometer."
   },
   {
-    "objectID": "system-overview.html#what-is-new",
-    "href": "system-overview.html#what-is-new",
-    "title": "Overview",
-    "section": "What is New",
-    "text": "What is New"
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Spinning Synth E155 Project",
+    "section": "",
+    "text": "The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn a potentiometer. The project would generate real time audio controlled by a digital gyroscope, keypad, and a potentiometer. The system would produce two independent audio outputs, each corresponding to a distinct sound source. The gyroscope, mounted on a rotating device, determines a baseline sound output to one speaker based on its rotational frequency, while the keypad and potentiometer control the note and pitch of a second, independent sound output to a different speaker.\nOur project ended up being a functional prototype of the spinning synth. The 8-key keypad plays a C-major scale directly from the MCU to a speaker, the A3G4250DTR gyroscope is read over SPI, and the MCU uses its ADC to read the 10k Ohm potentiometer."
+  },
+  {
+    "objectID": "index.html#project-demo-videos",
+    "href": "index.html#project-demo-videos",
+    "title": "Spinning Synth E155 Project",
+    "section": "Project Demo Videos",
+    "text": "Project Demo Videos\nKeypad digital audio synthesis demonstration: \nPotentiometer analog-to-digital converter reading demonstration: \nGyroscope reading demonstration:"
+  },
+  {
+    "objectID": "index.html#link-to-github",
+    "href": "index.html#link-to-github",
+    "title": "Spinning Synth E155 Project",
+    "section": "Link to GitHub",
+    "text": "Link to GitHub\nProject GitHub Repository"
+  },
+  {
+    "objectID": "mcu.html",
+    "href": "mcu.html",
+    "title": "MCU Design",
+    "section": "",
+    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output. All relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\n\n\n\n\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU by generating a square wave at the corresponding frequency for each key press. The MCU was also able to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions.\n\n\n\n\nSTM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\nE155 Development Board\nE155 Adapter Board\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
+  },
+  {
+    "objectID": "mcu.html#mcu-design-plan",
+    "href": "mcu.html#mcu-design-plan",
+    "title": "MCU Design",
+    "section": "",
+    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output. All relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\n\n\n\n\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU by generating a square wave at the corresponding frequency for each key press. The MCU was also able to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions.\n\n\n\n\nSTM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\nE155 Development Board\nE155 Adapter Board\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
   },
   {
     "objectID": "results.html",
@@ -278,28 +186,21 @@
     "href": "results.html#gyro-spi",
     "title": "Results",
     "section": "Gyro SPI",
-    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction for gyroscope x-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope y-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope z-axis reading"
-  },
-  {
-    "objectID": "results.html#mcu-freq-output",
-    "href": "results.html#mcu-freq-output",
-    "title": "Results",
-    "section": "MCU freq output",
-    "text": "MCU freq output"
-  },
-  {
-    "objectID": "results.html#adc-output",
-    "href": "results.html#adc-output",
-    "title": "Results",
-    "section": "ADC output",
-    "text": "ADC output\nThe ADC output was printed to the terminal as the potentiometer in a simple voltage divider circuit was adjusted. With a resolution of 6 bits, the ADC output spanned from 0-63 as the voltage into the analog pin spanned from 0-3.3V. This value was updated every 500ms through polling, although this could have been made more frequent."
+    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of x-axis velocity reading (0xA8 and 0xAB), and receiving the values in those registers (0x24, 0xFF)\n\n\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of y-axis velocity reading (0xA9 and 0xAC), and receiving the values in those registers (0x00, 0xB1)\n\n\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of z-axis velocity reading (0xAA and 0xAD), and receiving the values in those registers (0xEC, 0xFF)\n\n\nGyroscope reading demonstration:"
   },
   {
     "objectID": "results.html#mcu-frequency-output",
     "href": "results.html#mcu-frequency-output",
     "title": "Results",
     "section": "MCU Frequency output",
-    "text": "MCU Frequency output\nThe MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were as follows:\n\nC4: 261 Hz desired, 263 Hz actual\nD4: 294 Hz desired, 294 Hz actual\nE4: 330 Hz desired, 312 Hz actual\nF4: 349 Hz desired, 333 Hz actual\nG4: 392 Hz desired, 385 Hz actual\nA4: 440 Hz desired, 417 Hz actual\nB4: 494 Hz desired, 500 Hz actual\nC5: 523 Hz desired, 500 Hz actual\n\nThe accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method – we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope’s built-in high pass filter. This may have given room for error in the frequency measurements. However, to achieve more accurate frequency measurements, we also could have reconfigured our timer ARR and PSC values to support a higher degree of precision."
+    "text": "MCU Frequency output\nThe audio freqiency output, chosen from 8 options based on which key of the keypad is pressed, were measured with a RIGOL MSO1104 oscilloscope. The results were as follows:\n\nC4: 261 Hz desired, 263 Hz actual\nD4: 294 Hz desired, 294 Hz actual\nE4: 330 Hz desired, 312 Hz actual\nF4: 349 Hz desired, 333 Hz actual\nG4: 392 Hz desired, 385 Hz actual\nA4: 440 Hz desired, 417 Hz actual\nB4: 494 Hz desired, 500 Hz actual\nC5: 523 Hz desired, 500 Hz actual\n\nThe accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method – we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope’s built-in high pass filter. This may have caused some error in the frequency measurements. It is likely that the frequency measurements were not completely accurate since B4 and C5 on the keypad do sound distinct, but they had the same frequency reading. That being said, to achieve more accurate frequency outputs, we could have reconfigured our timer ARR and PSC values to support a higher degree of precision.\nKeypad digital audio synthesis demonstration:"
+  },
+  {
+    "objectID": "results.html#adc-output",
+    "href": "results.html#adc-output",
+    "title": "Results",
+    "section": "ADC output",
+    "text": "ADC output\nThe ADC output was printed to the terminal as the potentiometer in a simple voltage divider circuit was adjusted. With a resolution of 6 bits, the ADC output spanned from 0-63 as the voltage into the analog pin spanned from 0-3.3V. This value was updated every 500ms through polling, although this could have been made more frequent.\nPotentiometer analog-to-digital converter reading demonstration:"
   },
   {
     "objectID": "results.html#resources",
@@ -309,102 +210,24 @@
     "text": "Resources\nA3G4250 Digital Gyroscope Datasheet"
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
+    "objectID": "system-overview.html",
+    "href": "system-overview.html",
+    "title": "Overview",
     "section": "",
-    "text": "DSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io\nMCP4725 Datasheet\nPiano Key Frequencies - Wikipedia\nProject PariVo, E155 2024\nSciPy Signal Processing firwin"
+    "text": "The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs, using a microcontroller (MCU) and field-programmable gate array (FPGA). The project would generate real time audio controlled by a digital gyroscope, keypad, and knobs.\nThe gyroscope is be mounted on a spinning device, and its rotational velocity is read by the MCU. Simultaneously, 8 keys are connected to the MCU’s digital GPIO pins to choose from 8 distinct frequencies for an audio signal. Additionally, the MCU will use its built-in ADC peripheral to convert a voltage in an analog pin (controlled externally with the potentiometer knob) to a 4-bit digital value.\nThe original plan was to have two independent audio outputs, each corresponding to a distinct input source. One frequency would be calculated based on the angular velocity of the gyroscope, and the other frequency would depend on which of the 8 keys in the keypad were pressed. We unfortunately did not reach the point of driving a speaker based on the gyroscope’s input, but we were able to control one speaker based on the keypad.\nThe original plan was for the MCU to handle all user input (from the gyroscope, keypad, and potentiometer knob), and to forward those results (two square waves, and 4 bits encoding the potentiometer knob reading) to the FPGA for processing. The FPGA would then filter the digital waveforms using a FIR low-pass filter, with the cutoff frequency determined by the potentiometer reading. Then, the FPGA would send the filtered audio signals to two DACs over I2C to ultimately drive two speakers. Due to unforeseen challenges, we ended up not filtering the audio signal and driving the speakers directly with the MCU.\nIn the end, we created a digital audio synthesizer with 8 distinct inputs based on a keypad. The device also is also able to read the rotational velocity of a gyroscope along 3 axes, as well as analog voltage input to the MCU. Beyond that, we designed (but did not complete the implementation of) an FIR low-pass filter and I2C communication on the FPGA.\nThe aspects of this project that make it unique compared to E155 labs include usage of the MCU’s ADC peripheral and the FPGA’s I2C and sysDSP peripherals."
   },
   {
-    "objectID": "mcu.html#mcu-design-plan",
-    "href": "mcu.html#mcu-design-plan",
-    "title": "MCU Design",
+    "objectID": "system-overview.html#system-overview",
+    "href": "system-overview.html#system-overview",
+    "title": "Overview",
     "section": "",
-    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
-    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
+    "text": "The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs, using a microcontroller (MCU) and field-programmable gate array (FPGA). The project would generate real time audio controlled by a digital gyroscope, keypad, and knobs.\nThe gyroscope is be mounted on a spinning device, and its rotational velocity is read by the MCU. Simultaneously, 8 keys are connected to the MCU’s digital GPIO pins to choose from 8 distinct frequencies for an audio signal. Additionally, the MCU will use its built-in ADC peripheral to convert a voltage in an analog pin (controlled externally with the potentiometer knob) to a 4-bit digital value.\nThe original plan was to have two independent audio outputs, each corresponding to a distinct input source. One frequency would be calculated based on the angular velocity of the gyroscope, and the other frequency would depend on which of the 8 keys in the keypad were pressed. We unfortunately did not reach the point of driving a speaker based on the gyroscope’s input, but we were able to control one speaker based on the keypad.\nThe original plan was for the MCU to handle all user input (from the gyroscope, keypad, and potentiometer knob), and to forward those results (two square waves, and 4 bits encoding the potentiometer knob reading) to the FPGA for processing. The FPGA would then filter the digital waveforms using a FIR low-pass filter, with the cutoff frequency determined by the potentiometer reading. Then, the FPGA would send the filtered audio signals to two DACs over I2C to ultimately drive two speakers. Due to unforeseen challenges, we ended up not filtering the audio signal and driving the speakers directly with the MCU.\nIn the end, we created a digital audio synthesizer with 8 distinct inputs based on a keypad. The device also is also able to read the rotational velocity of a gyroscope along 3 axes, as well as analog voltage input to the MCU. Beyond that, we designed (but did not complete the implementation of) an FIR low-pass filter and I2C communication on the FPGA.\nThe aspects of this project that make it unique compared to E155 labs include usage of the MCU’s ADC peripheral and the FPGA’s I2C and sysDSP peripherals."
   },
   {
-    "objectID": "fpga.html#fpga-design-plan",
-    "href": "fpga.html#fpga-design-plan",
-    "title": "FPGA Design",
-    "section": "",
-    "text": "This project uses the iCE40 UP5K FPGA on the UPdino v3.1 development board. Originally, the FPGA was intended to act as a hardware accelerator for audio equalization. Specifically, the FPGA would apply a low-pass finite impule response (FIR) filter to a square wave generated by the MCU. The MCU would send two square waves to the FPGA–one of the frequency corresponding to the pressed key, and one of the frequency corresponding to the gyroscope’s angular speed– connected by wire.\nIn addition, the MCU would send the desired cutoff frequency of the low-pass filter, encoded with 4 bits, and also transmitted over wires. However, SPI also could have been used to transmit the cutoff frequency in order to increase resolution. The 4-bit cutoff frequency value would correspond to frequency spanning from 200 to 1600 Hz. This range was designed with the intended keypad range of middle C (~261 Hz) to C5 (~523 Hz), so 200-1600Hz should be an effective range of cutoff frequencies for the low-pass filter.\nInternally, a divided clock based on the HSOSC IP module would be used to generate a 44kHz signal to sample the audio inputs. This frequency was selected because 44kHz is double the highest audible audio frequency, making it a standard audio sampling frequency. The audio data would be sampled into a 51-bit wide shift register. Simultaneously, 51 16-bit taps corresponding to the cutoff frequency would be read in from BRAM. These taps would be convolved with the shift register of past inputs in order to calculate the current audio output. This would be accomplished using the sysDSP IP block SB_MAC16 (multiply and accumulate) primitive on the iCE40.\n\n\n\nBasic FIR filter design, Whitney Knitter via. Hackster.io\n\n\nSince the input is a square wave, the multiplication of each previous input with the corresponding tap should be relatively straightforward. The main source of complexity would be in the accumulation of all 51 taps. Executing all of this combinational logic would be challenge to fit within one clock cycle, giving rise to timing issues. As a result, this process would have to be pipelined, running over multiple clock cycles. Assuming the FPGA clock (based on HSOSC) is running at 40MHz and the FPGA is sampling the input at 44kHz, 900 processing cycles could fit within the time between samples. 900 cycles is more than enough to accumulate 51 16-bit precision taps. Thus, timing is not a concern with pipelining the FIR filter.\nIn order to hold the FIR filter output steady while the FIR filter is generating the next output, a synchronous enabled flop would be used to control the input to and output from the FIR filter module. This flop would be enabled based on an input ready signal, based on the 44kHz sampling signal, and output ready signal, driven by the controller of the FIR filter datapath.\nThere would be two instances of the FIR filter module, one for the MCU output driven by the keypad, and the other for the MCU output driven by the gyroscope. The outputs of the FIR filters then would be converted to 8-bit audio values, which would then be transmitted over The DACs would then be used to drive two speakers. I2C would be implemented using the built-in I2C IP on the iCE40. The iCE40 can support up to 2 sets of I2C busses. The MCP4725 DAC supports a standard 100 kHz communication frequency, as well as a 400 kHz fast mode and a 3.4 MHz high-speed mode. Additionally, the DAC must be sent 4 bytes (or 32 bits) in every transaction writing to the DAC Input Register. This means that the DAC fast mode speed of 400 kHz would be more than sufficient to drive audio at 44kHz."
-  },
-  {
-    "objectID": "fpga.html#filter-design",
-    "href": "fpga.html#filter-design",
-    "title": "FPGA Design",
-    "section": "Filter Design",
-    "text": "Filter Design\nThe FIR low-pass filter was designed to have 51 taps using the window method, as implemented by the firwin function in the SciPy Signal Processing library. This number was determined experimentally. Through trials with a varying number of taps, 51 was one of the lowest numbers where the audio filtering was noticeable. The 51 taps were then calculated for 15 cutoff frequencies, spanning from 200 Hz to 1.6 kHz.\n\n\n\nFIR low-pass filter taps vs cutoff frequency\n\n\nAll of these taps were then converted to 16-bit 2s-complement, and loaded into BRAM. An itial idea was to calculate the 51 taps using lines of best fit (selected by cutoff frequency), but the necessary precision would have required floating-point arithmetic, which is not supported on the FPGA."
-  },
-  {
-    "objectID": "references.html#hardware",
-    "href": "references.html#hardware",
-    "title": "References",
-    "section": "",
-    "text": "STM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\nE155 Development Board\nE155 Adapter Board\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
-  },
-  {
-    "objectID": "references.html#software-and-tools",
-    "href": "references.html#software-and-tools",
-    "title": "References",
-    "section": "Software and Tools",
-    "text": "Software and Tools\n\nSegger Embedded Studio\nLattice Radiant"
-  },
-  {
-    "objectID": "references.html#tutorials-technical-references",
-    "href": "references.html#tutorials-technical-references",
-    "title": "References",
-    "section": "Tutorials & Technical References",
-    "text": "Tutorials & Technical References\n\nMicro Ps Website\nProject PariVo, E155 2024\nSciPy Signal Processing firwin\nPiano Key Frequencies - Wikipedia\nDSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io"
-  },
-  {
-    "objectID": "mcu.html#mcu-design-reality",
-    "href": "mcu.html#mcu-design-reality",
-    "title": "MCU Design",
-    "section": "MCU Design reality",
-    "text": "MCU Design reality\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
-  },
-  {
-    "objectID": "hardware.html",
-    "href": "hardware.html",
-    "title": "Hardware",
-    "section": "",
-    "text": "The new hardware used in this project is a Digital-to-Analog Converter (DAC), Slip Ring, and Gyroscope\n\n\n\n\n\nMCP4725 DAC\n\n\nThe DAC used in the project is the MCP4725, a single-channel 12-bit DAC with an integrated output buffer and on board nonvolatile EEPROM. It communicates using a two wire I2C interface. In our project the goal of the DAC was to communicate with the FPGA using I2C where the FPGA acts as the I2C primary device and the MCP4725 functions as the secondary device. THe FPGA would send a digital waveform to the DAC, which would convert it to an analog signal to drive a speaker. We had initially planned to use two DACs, each driving a speaker, to make two different sounds. However we were not able to get I2C communication working on the FPGA, and therefore the DACs could not be used in the final result of the project.\nThe DAC is new hardware for the team, as we had not previously worked with digital to analog conversion or used a DAC to generate analog signals for sound output. In Lab 4, we had generated a square wave frequency and played sound through a speaker, but that was purely digital and did not involve analog waveforms. Additionally, we had not worked with I2C before.\n\n\n\n\n\n\n1528-1176-ND Slip Ring\n\n\nThe slip ring used in this project was the 1528-1176-ND, a 22 mm rotary gold plated slip ring designed for 12 wires. It has 12 color coded 28 AWG wires, each capable of carrying up to 2 A at 240 VAC or 240 VDC. The slip ring also includes a 44 mm diameter flange with mounting holes and is rated for rotational speeds up to 300 RPM. The primary goal of the slip ring in this project was to provide a reliable electrical connection between the spinning gyroscope and the MCU. Because the gyroscope would be rotating, a standard wired connection would work. The slip ring enabled continuous data transfer while the sensor was in motion and we were able to get the gyroscope and slip ring reading data to the MCU.\nThe slip ring was new to the team, as we had not previously used this type of rotating electrical connection. Working with it required consideration of noise, since slip rings can introduce electrical noise into measurements. In our project, the slip ring did introduce some noise, which required careful handling in the circuit and software to ensure accurate gyroscope readings.\n\n\n\n\n\n\nA3G4250DTR Gyroscope\n\n\nThe gyroscope used in this project was the A3G4250D, a 3-axis angular rate sensor capable of measuring rotational motion with a full scale range of +/- 245 degrees per second. It provides 16 bit rate output data and 8-bit temperature reading through either an SPI or I2C digital interface. In this project, the gyroscope was configured to communicate over SPI, with the goal of it outputting 16 bit angular acceleration data to the MCU for use in later frequency calculations. Our project successfully achieved this functionality. The gyroscope was able to measure angular velocity, convert it to a 16-bit digital output, and transmit the data to the MCU reliably over the SPI bus. This data was then used by the MCU in frequency computations.\nThe A3G4250D was new hardware. Prior coursework involved working with SPI and a simpler temperature sensor, but this project required us to go further by interpreting angular rate data and implementing continuous real time data capture over SPI."
-  },
-  {
-    "objectID": "hardware.html#new-hardwarecomponents-description",
-    "href": "hardware.html#new-hardwarecomponents-description",
-    "title": "Hardware",
-    "section": "",
-    "text": "The new hardware used in this project is a Digital-to-Analog Converter (DAC), Slip Ring, and Gyroscope\n\n\n\n\n\nMCP4725 DAC\n\n\nThe DAC used in the project is the MCP4725, a single-channel 12-bit DAC with an integrated output buffer and on board nonvolatile EEPROM. It communicates using a two wire I2C interface. In our project the goal of the DAC was to communicate with the FPGA using I2C where the FPGA acts as the I2C primary device and the MCP4725 functions as the secondary device. THe FPGA would send a digital waveform to the DAC, which would convert it to an analog signal to drive a speaker. We had initially planned to use two DACs, each driving a speaker, to make two different sounds. However we were not able to get I2C communication working on the FPGA, and therefore the DACs could not be used in the final result of the project.\nThe DAC is new hardware for the team, as we had not previously worked with digital to analog conversion or used a DAC to generate analog signals for sound output. In Lab 4, we had generated a square wave frequency and played sound through a speaker, but that was purely digital and did not involve analog waveforms. Additionally, we had not worked with I2C before.\n\n\n\n\n\n\n1528-1176-ND Slip Ring\n\n\nThe slip ring used in this project was the 1528-1176-ND, a 22 mm rotary gold plated slip ring designed for 12 wires. It has 12 color coded 28 AWG wires, each capable of carrying up to 2 A at 240 VAC or 240 VDC. The slip ring also includes a 44 mm diameter flange with mounting holes and is rated for rotational speeds up to 300 RPM. The primary goal of the slip ring in this project was to provide a reliable electrical connection between the spinning gyroscope and the MCU. Because the gyroscope would be rotating, a standard wired connection would work. The slip ring enabled continuous data transfer while the sensor was in motion and we were able to get the gyroscope and slip ring reading data to the MCU.\nThe slip ring was new to the team, as we had not previously used this type of rotating electrical connection. Working with it required consideration of noise, since slip rings can introduce electrical noise into measurements. In our project, the slip ring did introduce some noise, which required careful handling in the circuit and software to ensure accurate gyroscope readings.\n\n\n\n\n\n\nA3G4250DTR Gyroscope\n\n\nThe gyroscope used in this project was the A3G4250D, a 3-axis angular rate sensor capable of measuring rotational motion with a full scale range of +/- 245 degrees per second. It provides 16 bit rate output data and 8-bit temperature reading through either an SPI or I2C digital interface. In this project, the gyroscope was configured to communicate over SPI, with the goal of it outputting 16 bit angular acceleration data to the MCU for use in later frequency calculations. Our project successfully achieved this functionality. The gyroscope was able to measure angular velocity, convert it to a 16-bit digital output, and transmit the data to the MCU reliably over the SPI bus. This data was then used by the MCU in frequency computations.\nThe A3G4250D was new hardware. Prior coursework involved working with SPI and a simpler temperature sensor, but this project required us to go further by interpreting angular rate data and implementing continuous real time data capture over SPI."
-  },
-  {
-    "objectID": "team.html",
-    "href": "team.html",
-    "title": "Meet the Team!",
-    "section": "",
-    "text": "Madeleine Kan is a senior engineering major at Harvey Mudd College. She is studying general engineering with a focus on computer engineering with biomedical applications. She has experience in supply chain process engineering, firmware engineering, and RTL design and verificaiton. In the spring of 2025, she worked as part of the UC Berkeley clinic team to upgrade the communication protocol for a low-cost air quality sensor. Since the start of 2024, she has worked in the Quantum Quasars Lab to develop an astronomical random number generator for Bell-type tests of quantum entanglement. She also has tutored for a variety of engineering courses and labs. She is part of the CMS Swim team, specializing in sprint freestyle and butterfly. In her free time, she likes to crochet, learn the piano, and spend time with her friends and family.\nLinks\nPersonal E155 Portfolio\n GitHub\n LinkedIn\n\nSarah is a current undergraduate student in Computer Science, Mathematics, and Economics, she is passionate about leveraging technology and analytical problem-solving to drive impactful solutions. Her experience spans software development, optimization, and data analysis, with projects ranging from building AI-powered applications to designing mathematical models for decision-making.\nShe is always eager to explore innovative applications of technology, connect with like-minded professionals, and contribute to projects that create meaningful impact.\nLinks\n GitHub\n LinkedIn"
-  },
-  {
-    "objectID": "index.html#project-video",
-    "href": "index.html#project-video",
-    "title": "Home",
-    "section": "Project Video",
-    "text": "Project Video"
-  },
-  {
-    "objectID": "index.html#project-demo-video",
-    "href": "index.html#project-demo-video",
-    "title": "Home",
-    "section": "Project Demo Video",
-    "text": "Project Demo Video"
-  },
-  {
-    "objectID": "index.html#project-demo-videos",
-    "href": "index.html#project-demo-videos",
-    "title": "Home",
-    "section": "Project Demo Videos",
-    "text": "Project Demo Videos"
+    "objectID": "system-overview.html#block-diagram",
+    "href": "system-overview.html#block-diagram",
+    "title": "Overview",
+    "section": "Block Diagram",
+    "text": "Block Diagram\nBelow is a block diagram representing the entire (planned) project:\n\n\n\nPlanned System Block Diagram\n\n\nUnfortunately, due to unforeseen challenges (both within and outside the scope of the project), we did not get to complete the FPGA design of the project. Below is a block diagram representing how the project actually turned out:\n\n\n\nActual System Block Diagram"
   }
 ]
