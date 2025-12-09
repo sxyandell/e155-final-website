@@ -19,6 +19,15 @@ At the midpoint checkoff, we re-scoped the project to eliminate the last 3 speci
 The MCU SystemClock is configured based on the PLL, which is configured to run at 40 MHz. The ADC uses the SystemClock, and SPI uses  the APB2 clk with the baudrate configured to be 1 MHz. The gyroscope and analog-to-digital converter (ADC) were both read using polling every 500 ms (i.e. at 2Hz). This was based on Timer2 of the MCU. If we got to the point of driving another speaker with the gyroscope reading, the frequency would have likely been increased until the speaker's output frequency was appropriately responsive to changes in gyroscope velocity. However, since the sampling frequency for the gyroscope reading and the ADC didn't need to be terribly high, polling was adequate. Had more frequent sampling been required, we could have implemented interrupts or direct memory access.
 
 ## Gyro SPI
+The gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:
+
+
+![SPI Transaction for gyroscope x-axis reading](docs\images\DS1Z_QuickPrint8.png){width=30%, fig-align="center"}
+
+![SPI Transaction for gyroscope y-axis reading](docs\images\DS1Z_QuickPrint9.png){width=30%, fig-align="center"}
+
+![SPI Transaction for gyroscope z-axis reading](docs\images\DS1Z_QuickPrint10.png){width=30%, fig-align="center"}
+
 
 ## MCU Frequency output
 

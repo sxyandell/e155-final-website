@@ -277,7 +277,7 @@
     "href": "results.html#gyro-spi",
     "title": "Results",
     "section": "Gyro SPI",
-    "text": "Gyro SPI"
+    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction for gyroscope x-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope y-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope z-axis reading"
   },
   {
     "objectID": "results.html#mcu-freq-output",
