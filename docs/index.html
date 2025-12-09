@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -81,6 +82,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
     </a>
@@ -144,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#video" id="toc-video" class="nav-link" data-scroll-target="#video">Video</a></li>
+  <li><a href="#project-demo-videos" id="toc-project-demo-videos" class="nav-link" data-scroll-target="#project-demo-videos">Project Demo Videos</a></li>
   <li><a href="#link-to-github" id="toc-link-to-github" class="nav-link" data-scroll-target="#link-to-github">Link to GitHub</a></li>
   </ul>
 </nav>
@@ -173,19 +176,16 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source.</p>
-<ul>
-<li>The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker.</li>
-<li>The keypad and knobs control the note and pitch of another sound output to a different speaker.</li>
-</ul>
+<p>The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn a potentiometer. The project would generate real time audio controlled by a digital gyroscope, keypad, and a potentiometer. The system would produce two independent audio outputs, each corresponding to a distinct sound source. The gyroscope, mounted on a rotating device, determines a baseline sound output to one speaker based on its rotational frequency, while the keypad and potentiometer control the note and pitch of a second, independent sound output to a different speaker.</p>
+<p>Our project ended up being a functional prototype of the spinning synth. The 8-key keypad plays a C-major scale directly from the MCU to a speaker, the A3G4250DTR gyroscope is read over SPI, and the MCU uses its ADC to read the 10k Ohm potentiometer.</p>
 </section>
-<section id="video" class="level2">
-<h2 class="anchored" data-anchor-id="video">Video</h2>
+<section id="project-demo-videos" class="level2">
+<h2 class="anchored" data-anchor-id="project-demo-videos">Project Demo Videos</h2>
 <p></p><div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/finalProject.MOV"></video></div> <div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/potenResults.MOV"></video></div> <div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/gyroResults.MOV"></video></div><p></p>
 </section>
 <section id="link-to-github" class="level2">
 <h2 class="anchored" data-anchor-id="link-to-github">Link to GitHub</h2>
-<p><a href="https://github.com/sxyandell/s-m_microp_project">GitHub</a></p>
+<p><a href="https://github.com/sxyandell/s-m_microp_project">Project GitHub Repository</a></p>
 
 
 </section>
