@@ -81,7 +81,7 @@
     "href": "index.html",
     "title": "Home",
     "section": "",
-    "text": "The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source. - The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker. - The keypad and knobs control the note and pitch of another sound output to a different speaker."
+    "text": "The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn a potentiometer. The project would generate real time audio controlled by a digital gyroscope, keypad, and a potentiometer. The system would produce two independent audio outputs, each corresponding to a distinct sound source. The gyroscope, mounted on a rotating device, determines a baseline sound output to one speaker based on its rotational frequency, while the keypad and potentiometer control the note and pitch of a second, independent sound output to a different speaker.\nOur project ended up being a functional prototype of the spinning synth. The 8-key keypad plays a C-major scale directly from the MCU to a speaker, the A3G4250DTR gyroscope is read over SPI, and the MCU uses its ADC to read the 10k Ohm potentiometer."
   },
   {
     "objectID": "index.html#project-description-and-overview",
@@ -130,7 +130,7 @@
     "href": "mcu.html",
     "title": "MCU Design",
     "section": "",
-    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
+    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
   },
   {
     "objectID": "mcu.html#mcu-overview-stm32l432kc",
@@ -144,7 +144,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "STM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
+    "text": "STM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\nE155 Development Board\nE155 Adapter Board\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
   },
   {
     "objectID": "references.html#cited-works",
@@ -207,7 +207,7 @@
     "href": "index.html#link-to-github",
     "title": "Home",
     "section": "Link to GitHub",
-    "text": "Link to GitHub\nGitHub"
+    "text": "Link to GitHub\nProject GitHub Repository"
   },
   {
     "objectID": "system-overview.html#block-diagram",
@@ -242,7 +242,7 @@
     "href": "index.html#abstract",
     "title": "Home",
     "section": "",
-    "text": "The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source. - The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker. - The keypad and knobs control the note and pitch of another sound output to a different speaker."
+    "text": "The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn a potentiometer. The project would generate real time audio controlled by a digital gyroscope, keypad, and a potentiometer. The system would produce two independent audio outputs, each corresponding to a distinct sound source. The gyroscope, mounted on a rotating device, determines a baseline sound output to one speaker based on its rotational frequency, while the keypad and potentiometer control the note and pitch of a second, independent sound output to a different speaker.\nOur project ended up being a functional prototype of the spinning synth. The 8-key keypad plays a C-major scale directly from the MCU to a speaker, the A3G4250DTR gyroscope is read over SPI, and the MCU uses its ADC to read the 10k Ohm potentiometer."
   },
   {
     "objectID": "system-overview.html#what-is-new",
@@ -319,7 +319,7 @@
     "href": "mcu.html#mcu-design-plan",
     "title": "MCU Design",
     "section": "",
-    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
+    "text": "STM32 Nucleo-32 board with an STM32L432KC MCU\n\n\nThe goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.\n\n\n\n\n\n\n\nMechanical Keys and Housing\n\n\nThe keypad is read through the MCUs GPIO pins, with each key functioning as a switch. The key presses are debounced, and only one key is allowed to be pressed at a time. The 8 keys correspond to a C major scale starting at middle C (C4) to C5 with each key mapped to a specific note in the scale. The MCU determines the output frequency based on the key pressed.\n\n\n\n\n\n\nGyroscope and Housing\n\n\n  Gyroscope Demonstration\nThe 3-axis digital gyroscope measures angular rotation around three axes. The gyroscope outputs 16 bit angular rate data (sent as two 8-bit values) over SPI to the MCU. The MCU reads this data and converts it into a corresponding frequency, which can then be sent to the FPGA.\n\n\n\n\nThe potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.\nA pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.\nAll relevant information is communicated from the MCU to the FPGA over SPI.\n\n\n\n\nIn this project, we were able to build an 8-key keypad for users to interact with. It operates as described, each key corresponding to a note in the C-major scale from middle C (C4) to C5. We initially planned to transfer this information from the MCU to the FPGA over four wires, since only a small amount of data needed to be sent. However, we ultimately decided to drive a speaker directly from the MCU to output the keypad notes. The MCU was also to read data from the A3G4250DTR gyroscope and we were able to display the angular rotation readings on the MCU. Finally, we were able to read the analog voltage from a 10 kΩ potentiometer using the MCU’s onboard ADC, which could be used to adjust filter parameters or other project functions."
   },
   {
     "objectID": "fpga.html#fpga-design-plan",
@@ -340,7 +340,7 @@
     "href": "references.html#hardware",
     "title": "References",
     "section": "",
-    "text": "STM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
+    "text": "STM32L432KC Datasheet\nSTM32L432KC Reference Manual\nUPduino v3.1 & iCE40 UP5K Datasheet\nUPduino v3.1 & iCE40 UP5K Usage Guide\nE155 Development Board\nE155 Adapter Board\n1528-1176-ND Datasheet\nMCP4725 Datasheet\nA3G4250DTR Datasheet"
   },
   {
     "objectID": "references.html#software-and-tools",
@@ -383,5 +383,26 @@
     "title": "Meet the Team!",
     "section": "",
     "text": "Madeleine Kan is a senior engineering major at Harvey Mudd College. She is studying general engineering with a focus on computer engineering with biomedical applications. She has experience in supply chain process engineering, firmware engineering, and RTL design and verificaiton. In the spring of 2025, she worked as part of the UC Berkeley clinic team to upgrade the communication protocol for a low-cost air quality sensor. Since the start of 2024, she has worked in the Quantum Quasars Lab to develop an astronomical random number generator for Bell-type tests of quantum entanglement. She also has tutored for a variety of engineering courses and labs. She is part of the CMS Swim team, specializing in sprint freestyle and butterfly. In her free time, she likes to crochet, learn the piano, and spend time with her friends and family.\nLinks\nPersonal E155 Portfolio\n GitHub\n LinkedIn\n\nSarah is a current undergraduate student in Computer Science, Mathematics, and Economics, she is passionate about leveraging technology and analytical problem-solving to drive impactful solutions. Her experience spans software development, optimization, and data analysis, with projects ranging from building AI-powered applications to designing mathematical models for decision-making.\nShe is always eager to explore innovative applications of technology, connect with like-minded professionals, and contribute to projects that create meaningful impact.\nLinks\n GitHub\n LinkedIn"
+  },
+  {
+    "objectID": "index.html#project-video",
+    "href": "index.html#project-video",
+    "title": "Home",
+    "section": "Project Video",
+    "text": "Project Video"
+  },
+  {
+    "objectID": "index.html#project-demo-video",
+    "href": "index.html#project-demo-video",
+    "title": "Home",
+    "section": "Project Demo Video",
+    "text": "Project Demo Video"
+  },
+  {
+    "objectID": "index.html#project-demo-videos",
+    "href": "index.html#project-demo-videos",
+    "title": "Home",
+    "section": "Project Demo Videos",
+    "text": "Project Demo Videos"
   }
 ]
