@@ -4,8 +4,9 @@ title: "Home"
 
 ## Abstract
 The goal of this project is to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs. The project generates real time audio controlled by a digital gyroscope, keypad, and knobs. The system produces two independent audio outputs, each corresponding to a distinct sound source.
-- The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker.
-- The keypad and knobs control the note and pitch of another sound output to a different speaker.
+
+* The gyroscope is mounted on a spinning device and the rotational frequency determines a baseline sound output to one speaker.
+* The keypad and knobs control the note and pitch of another sound output to a different speaker.
 
 
 ## Video
