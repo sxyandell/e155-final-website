@@ -2,3 +2,4 @@
 title: "MCU Design"
 ---
 
+![STM32 Nucleo-32 board with an STM32L432KC MCU](\docs\images\stm32.jpeg)

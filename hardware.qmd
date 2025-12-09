@@ -7,6 +7,27 @@ title: "Hardware"
 ## Circuit Diagram
 
 ## BOM
+| Item                     | Part Number          | Quantity | Price (Raw) | Shipping | Total Price (w/ Tax) | Purpose                  |
+|--------------------------|-----------------------|----------|-------------|----------|------------------------|---------------------------|
+| Gyroscope                | A3G4250DTR            | 1        | 15.98       | 5.99     | 21.97                  | Wheel                     |
+| 6-wire Slip Ring         | 1528-1176-ND          | 1        | 9.99        | 0.97     | 10.96                  | Wheel                     |
+| DAC                      | MCP4725A1T-E/CH       | 4        | 5.08        | –        | 5.08                   | Driving speaker           |
+| SMD adapters             | –                     | 3        | stockroom   | –        | –                      | Mounting DAC & gyro       |
+| Potentiometer (volume)   | –                     | 1        | stockroom   | –        | –                      | –                         |
+| Capacitors, resistors    | –                     | 5        | stockroom   | –        | –                      | –                         |
+| Speaker w/ amplifier     | –                     | 2        | digital lab | –        | –                      | –                         |
+| Mechanical switch keys   | –                     | 8        | makerspace  | –        | –                      | Keypad                    |
+| Plywood                  | –                     | 1        | makerspace  | –        | –                      | Wheel housing             |
+| 4 wood screws            | –                     | 4        | stockroom   | –        | –                      | Wheel housing             |
+| PLA                      | –                     | 8        | makerspace  | –        | –                      | 3D print wheel/keycaps    |
+
+### Summary
+| Description      | Amount |
+|------------------|--------|
+| Pre-tax cost     | 38.01  |
+| Shipping         | 6.99   |
+| Sales tax        | 4.03   |
+| **Total**        | **49.02** |
 
 
 
