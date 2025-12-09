@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,6 +80,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
     </a>
@@ -196,36 +199,24 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="docs\images\DS1Z_QuickPrint8.png" class="img-fluid figure-img"></p>
-<figcaption>SPI Transaction with controller sending register for lower and upper bits of x-axis velocity reading (0xA8 and 0xAB), and receiving the values in those registers (0x24, 0xFF)</figcaption>
+<figcaption>SPI Transaction for gyroscope x-axis reading</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="docs\images\DS1Z_QuickPrint9.png" class="img-fluid figure-img"></p>
-<figcaption>SPI Transaction with controller sending register for lower and upper bits of y-axis velocity reading (0xA9 and 0xAC), and receiving the values in those registers (0x00, 0xB1)</figcaption>
+<figcaption>SPI Transaction for gyroscope y-axis reading</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="docs\images\DS1Z_QuickPrint10.png" class="img-fluid figure-img"></p>
-<figcaption>SPI Transaction with controller sending register for lower and upper bits of z-axis velocity reading (0xAA and 0xAD), and receiving the values in those registers (0xEC, 0xFF)</figcaption>
+<figcaption>SPI Transaction for gyroscope z-axis reading</figcaption>
 </figure>
 </div>
 </section>
 <section id="mcu-frequency-output" class="level2">
 <h2 class="anchored" data-anchor-id="mcu-frequency-output">MCU Frequency output</h2>
-<p>The MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were as follows:</p>
-<ul>
-<li>C4: 261 Hz desired, 263 Hz actual</li>
-<li>D4: 294 Hz desired, 294 Hz actual</li>
-<li>E4: 330 Hz desired, 312 Hz actual</li>
-<li>F4: 349 Hz desired, 333 Hz actual</li>
-<li>G4: 392 Hz desired, 385 Hz actual</li>
-<li>A4: 440 Hz desired, 417 Hz actual</li>
-<li>B4: 494 Hz desired, 500 Hz actual</li>
-<li>C5: 523 Hz desired, 500 Hz actual</li>
-</ul>
-<p>The accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method – we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope’s built-in high pass filter. This may have given room for error in the frequency measurements. However, to achieve more accurate frequency measurements, we also could have reconfigured our timer ARR and PSC values to support a higher degree of precision.</p>
 </section>
 <section id="adc-output" class="level2">
 <h2 class="anchored" data-anchor-id="adc-output">ADC output</h2>
