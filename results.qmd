@@ -32,7 +32,7 @@ Gyroscope reading demonstration:
 
 
 ## MCU Frequency output
-The MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were as follows:
+The audio freqiency output, chosen from 8 options based on which key of the keypad is pressed, were measured with a RIGOL MSO1104 oscilloscope. The results were as follows:
 
 * C4: 261 Hz desired, 263 Hz actual
 * D4: 294 Hz desired, 294 Hz actual
@@ -43,7 +43,10 @@ The MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were a
 * B4: 494 Hz desired, 500 Hz actual
 * C5: 523 Hz desired, 500 Hz actual
 
-The accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method -- we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope's built-in high pass filter. This may have given room for error in the frequency measurements. However, to achieve more accurate frequency measurements, we also could have reconfigured our timer ARR and PSC values to support a higher degree of precision.
+The accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method -- we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope's built-in high pass filter. This may have caused some error in the frequency measurements. It is likely that the frequency measurements were not completely accurate since B4 and C5 on the keypad do sound distinct, but they had the same frequency reading. That being said, to achieve more accurate frequency outputs, we could have reconfigured our timer ARR and PSC values to support a higher degree of precision.
+
+Keypad digital audio synthesis demonstration:
+{{< video docs/images/finalProject.MOV >}}
 
 
 

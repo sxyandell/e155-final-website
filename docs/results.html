@@ -217,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="mcu-frequency-output" class="level2">
 <h2 class="anchored" data-anchor-id="mcu-frequency-output">MCU Frequency output</h2>
-<p>The MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were as follows:</p>
+<p>The audio freqiency output, chosen from 8 options based on which key of the keypad is pressed, were measured with a RIGOL MSO1104 oscilloscope. The results were as follows:</p>
 <ul>
 <li>C4: 261 Hz desired, 263 Hz actual</li>
 <li>D4: 294 Hz desired, 294 Hz actual</li>
@@ -228,12 +228,13 @@ ul.task-list li input[type="checkbox"] {
 <li>B4: 494 Hz desired, 500 Hz actual</li>
 <li>C5: 523 Hz desired, 500 Hz actual</li>
 </ul>
-<p>The accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method – we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope’s built-in high pass filter. This may have given room for error in the frequency measurements. However, to achieve more accurate frequency measurements, we also could have reconfigured our timer ARR and PSC values to support a higher degree of precision.</p>
+<p>The accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method – we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope’s built-in high pass filter. This may have caused some error in the frequency measurements. It is likely that the frequency measurements were not completely accurate since B4 and C5 on the keypad do sound distinct, but they had the same frequency reading. That being said, to achieve more accurate frequency outputs, we could have reconfigured our timer ARR and PSC values to support a higher degree of precision.</p>
+<p>Keypad digital audio synthesis demonstration: </p><div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/finalProject.MOV"></video></div><p></p>
 </section>
 <section id="adc-output" class="level2">
 <h2 class="anchored" data-anchor-id="adc-output">ADC output</h2>
 <p>The ADC output was printed to the terminal as the potentiometer in a simple voltage divider circuit was adjusted. With a resolution of 6 bits, the ADC output spanned from 0-63 as the voltage into the analog pin spanned from 0-3.3V. This value was updated every 500ms through polling, although this could have been made more frequent.</p>
-<p>Potentiometer analog-to-digital converter reading demonstration: </p><div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/potenResults.MOV"></video></div><p></p>
+<p>Potentiometer analog-to-digital converter reading demonstration: </p><div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/potenResults.MOV"></video></div><p></p>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
@@ -645,6 +646,7 @@ ul.task-list li input[type="checkbox"] {
 </div> <!-- /content -->
 <script>videojs(video_shortcode_videojs_video1);</script>
 <script>videojs(video_shortcode_videojs_video2);</script>
+<script>videojs(video_shortcode_videojs_video3);</script>
 
 
 

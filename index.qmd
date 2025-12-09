@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Spinning Synth E155 Project"
 ---
 
 ## Abstract
