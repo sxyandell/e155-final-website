@@ -27,6 +27,9 @@ The gyroscope reading printed to the terminal reflected changes in rotational ve
 
 ![SPI Transaction with controller sending register for lower and upper bits of z-axis velocity reading (0xAA and 0xAD), and receiving the values in those registers (0xEC, 0xFF)](docs\images\DS1Z_QuickPrint10.png){width=30%, fig-align="center"}
 
+Gyroscope reading demonstration:
+{{< video docs/images/gyroResults.MOV >}}
+
 
 ## MCU Frequency output
 The MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were as follows:
@@ -46,6 +49,9 @@ The accuracy of the frequencies varies by note, and some notes are outside of th
 
 ## ADC output
 The ADC output was printed to the terminal as the potentiometer in a simple voltage divider circuit was adjusted. With a resolution of 6 bits, the ADC output spanned from 0-63 as the voltage into the analog pin spanned from 0-3.3V. This value was updated every 500ms through polling, although this could have been made more frequent.
+
+Potentiometer analog-to-digital converter reading demonstration:
+{{< video docs/images/potenResults.MOV >}}
 
 ## Resources
 [A3G4250 Digital Gyroscope Datasheet](https://www.st.com/content/ccc/resource/technical/document/datasheet/5c/f1/a4/70/1b/fa/40/d2/DM00047823.pdf/files/DM00047823.pdf/jcr:content/translations/en.DM00047823.pdf)

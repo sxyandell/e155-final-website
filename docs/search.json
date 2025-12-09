@@ -278,7 +278,7 @@
     "href": "results.html#gyro-spi",
     "title": "Results",
     "section": "Gyro SPI",
-    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of x-axis velocity reading (0xA8 and 0xAB), and receiving the values in those registers (0x24, 0xFF)\n\n\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of y-axis velocity reading (0xA9 and 0xAC), and receiving the values in those registers (0x00, 0xB1)\n\n\n\n\n\nSPI Transaction with controller sending register for lower and upper bits of z-axis velocity reading (0xAA and 0xAD), and receiving the values in those registers (0xEC, 0xFF)"
+    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction for gyroscope x-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope y-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope z-axis reading"
   },
   {
     "objectID": "results.html#mcu-freq-output",

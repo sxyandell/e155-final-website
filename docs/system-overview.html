@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.21">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,15 +32,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,8 +79,6 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
     </a>
@@ -173,6 +170,12 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="system-overview" class="level2">
 <h2 class="anchored" data-anchor-id="system-overview">System Overview</h2>
+<p>The goal of this project was to design an analog style synthesizer with an instrument that makes sound when you spin it, press keys or turn knobs, using a microcontroller (MCU) and field-programmable gate array (FPGA). The project would generate real time audio controlled by a digital gyroscope, keypad, and knobs.</p>
+<p>The gyroscope is be mounted on a spinning device, and its rotational velocity is read by the MCU. Simultaneously, 8 keys are connected to the MCU’s digital GPIO pins to choose from 8 distinct frequencies for an audio signal. Additionally, the MCU will use its built-in ADC peripheral to convert a voltage in an analog pin (controlled externally with the potentiometer knob) to a 4-bit digital value.</p>
+<p>The original plan was to have two independent audio outputs, each corresponding to a distinct input source. One frequency would be calculated based on the angular velocity of the gyroscope, and the other frequency would depend on which of the 8 keys in the keypad were pressed. We unfortunately did not reach the point of driving a speaker based on the gyroscope’s input, but we were able to control one speaker based on the keypad.</p>
+<p>The original plan was for the MCU to handle all user input (from the gyroscope, keypad, and potentiometer knob), and to forward those results (two square waves, and 4 bits encoding the potentiometer knob reading) to the FPGA for processing. The FPGA would then filter the digital waveforms using a FIR low-pass filter, with the cutoff frequency determined by the potentiometer reading. Then, the FPGA would send the filtered audio signals to two DACs over I2C to ultimately drive two speakers. Due to unforeseen challenges, we ended up not filtering the audio signal and driving the speakers directly with the MCU.</p>
+<p>In the end, we created a digital audio synthesizer with 8 distinct inputs based on a keypad. The device also is also able to read the rotational velocity of a gyroscope along 3 axes, as well as analog voltage input to the MCU. Beyond that, we designed (but did not complete the implementation of) an FIR low-pass filter and I2C communication on the FPGA.</p>
+<p>The aspects of this project that make it unique compared to E155 labs include usage of the MCU’s ADC peripheral and the FPGA’s I2C and sysDSP peripherals.</p>
 </section>
 <section id="block-diagram" class="level2">
 <h2 class="anchored" data-anchor-id="block-diagram">Block Diagram</h2>
