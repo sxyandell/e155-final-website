@@ -15,8 +15,14 @@ scale directly from the MCU to a speaker, the A3G4250DTR gyroscope
 is read over SPI, and the MCU uses its ADC to read the 10k Ohm potentiometer. 
 
 ## Project Demo Videos
+
+Keypad digital audio synthesis demonstration:
 {{< video docs/images/finalProject.MOV >}}
+
+Potentiometer analog-to-digital converter reading demonstration:
 {{< video docs/images/potenResults.MOV >}}
+
+Gyroscope reading demonstration:
 {{< video docs/images/gyroResults.MOV >}}
 
 ## Link to GitHub
