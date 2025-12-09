@@ -32,7 +32,7 @@
     "href": "results.html",
     "title": "Results",
     "section": "",
-    "text": "Audio outputs: Two independent channels produced in real time\nFrequency mapping: Gyro-derived baseline and keypad-derived note frequencies"
+    "text": "Our original specifications were as follows:\n\nOne frequency output is controlled continuously with gyroscope, and frequency increases with rotational velocity\nBased on keypad input, 8 distinct frequencies can be played within 1% accuracy\nFrequency output from gyroscope and keypad are played at the same time\nVolume can be adjusted continuously\nLow and high pass filters function with cutoff frequency that can be adjusted continuously\nLPF has a cutoff frequency between 8 kHz and 12 kHz, with a resolution of 2.5 kHz (within 10% accuracy)\nSystem can handle frequencies from 60 Hz to 1100 Hz\n\nAt the midpoint checkoff, we re-scoped the project to eliminate the last 3 specifications. Of inital specifications, we achieved enough for proficiency. We were able to read the velocity of the gyroscope, read the value of a continuous range of voltages using a potentiometer + voltage divider and the ADC, and play 8 distinct frequencies based on keypad input within 1% accuracy. However, we did not get to the point of driving a speaker based on the rotational velocity of the gyroscope, nor did we get to interpret the reading of the ADC to control the volume. That being said, we had all of the building blocks for our design, at least on the MCU side."
   },
   {
     "objectID": "results.html#key-results",
@@ -277,7 +277,7 @@
     "href": "results.html#gyro-spi",
     "title": "Results",
     "section": "Gyro SPI",
-    "text": "Gyro SPI"
+    "text": "Gyro SPI\nThe gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:\n\n\n\nSPI Transaction for gyroscope x-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope y-axis reading\n\n\n\n\n\nSPI Transaction for gyroscope z-axis reading"
   },
   {
     "objectID": "results.html#mcu-freq-output",
