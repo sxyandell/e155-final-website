@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -81,6 +82,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Spinning Synth: MCU + FPGA Audio System</span>
     </a>
@@ -146,6 +149,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mcu-design-plan" id="toc-mcu-design-plan" class="nav-link active" data-scroll-target="#mcu-design-plan">MCU Design Plan</a>
   <ul class="collapse">
   <li><a href="#the-project-has-three-inputs" id="toc-the-project-has-three-inputs" class="nav-link" data-scroll-target="#the-project-has-three-inputs">The project has three inputs:</a></li>
+  <li><a href="#signal-generation" id="toc-signal-generation" class="nav-link" data-scroll-target="#signal-generation">Signal Generation</a></li>
   <li><a href="#mcu-design-reality" id="toc-mcu-design-reality" class="nav-link" data-scroll-target="#mcu-design-reality">MCU Design reality</a></li>
   </ul></li>
   </ul>
@@ -181,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>STM32 Nucleo-32 board with an STM32L432KC MCU</figcaption>
 </figure>
 </div>
-<p>The goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output.</p>
+<p>The goal of this project was to use the STM32 Nucleo-32 board with an STM32L432KC Microcontroller (MCU) to handle all the user inputs and determine the frequency of sound to be played through two speakers. The MCU will take multiple inputs, interpret their data and communicate with the FPGA to generate the desired audio output. All relevant information is communicated from the MCU to the FPGA over SPI.</p>
 <section id="the-project-has-three-inputs" class="level3">
 <h3 class="anchored" data-anchor-id="the-project-has-three-inputs">The project has three inputs:</h3>
 <section id="key-keypad" class="level4">
@@ -209,9 +213,11 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="k-ohm-potentiometer">10k Ohm Potentiometer</h4>
 <div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="docs/images/potenResults.MOV"></video></div>
 <p>The potentiometer outputs an analog voltage, which the MCU reads using its onboard ADC. This voltage is used to determine the cutoff frequency for a digital filter implemented on the FPGA.</p>
-<p>A pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.</p>
-<p>All relevant information is communicated from the MCU to the FPGA over SPI.</p>
 </section>
+</section>
+<section id="signal-generation" class="level3">
+<h3 class="anchored" data-anchor-id="signal-generation">Signal Generation</h3>
+<p>A pin on the MCU is connected to a timer of one of the two desired frequencies, and the timer is switched at a frequency fast enough so the resulting signal sounds like the sum of two, but slow enough so that the FPGA can successfully sample the two frequencies.</p>
 </section>
 <section id="mcu-design-reality" class="level3">
 <h3 class="anchored" data-anchor-id="mcu-design-reality">MCU Design reality</h3>
