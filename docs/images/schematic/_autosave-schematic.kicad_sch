@@ -2682,7 +2682,7 @@
 	)
 	(text "STM32L432KC"
 		(exclude_from_sim no)
-		(at 148.59 28.956 0)
+		(at 148.59 34.036 0)
 		(effects
 			(font
 				(size 1.27 1.27)

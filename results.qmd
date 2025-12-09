@@ -1,5 +1,29 @@
 ---
 title: "Results"
 ---
+## Specifications
+Our original specifications were as follows:
 
+* One frequency output is controlled continuously with gyroscope, and frequency increases with rotational velocity
+* Based on keypad input, 8 distinct frequencies can be played within 1% accuracy
+* Frequency output from gyroscope and keypad are played at the same time
+* Volume can be adjusted continuously
+* Low and high pass filters function with cutoff frequency that can be adjusted continuously
+* LPF has a cutoff frequency between 8 kHz and 12 kHz, with a resolution of 2.5 kHz (within 10% accuracy)
+* System can handle frequencies from 60 Hz to 1100 Hz
 
+At the midpoint checkoff, we re-scoped the project to eliminate the last 3 specifications. Of  inital specifications, we achieved enough for proficiency. We were able to read the velocity of the gyroscope, read the value of a continuous range of voltages using a potentiometer + voltage divider and the ADC, and play 8 distinct frequencies based on keypad input within 1% accuracy. However, we did not get to the point of driving a speaker based on the rotational velocity of the gyroscope, nor did we get to interpret the reading of the ADC to control the volume. That being said, we had all of the building blocks for our design, at least on the MCU side.
+
+## MCU Timing
+
+The MCU SystemClock is configured based on the PLL, which is configured to run at 40 MHz. The ADC uses the SystemClock, and SPI uses  the APB2 clk with the baudrate configured to be 1 MHz. The gyroscope and analog-to-digital converter (ADC) were both read using polling every 500 ms (i.e. at 2Hz). This was based on Timer2 of the MCU. If we got to the point of driving another speaker with the gyroscope reading, the frequency would have likely been increased until the speaker's output frequency was appropriately responsive to changes in gyroscope velocity. However, since the sampling frequency for the gyroscope reading and the ADC didn't need to be terribly high, polling was adequate. Had more frequent sampling been required, we could have implemented interrupts or direct memory access.
+
+## Gyro SPI
+
+## MCU Frequency output
+
+## ADC output
+The ADC output was printed to the terminal as the potentiometer in a simple voltage divider circuit was adjusted. With a resolution of 6 bits, the ADC output spanned from 0-63 as the voltage into the analog pin spanned from 0-3.3V. This value was updated every 500ms through polling, although this could have been made more frequent.
+
+## Resources
+[A3G4250 Digital Gyroscope Datasheet](https://www.st.com/content/ccc/resource/technical/document/datasheet/5c/f1/a4/70/1b/fa/40/d2/DM00047823.pdf/files/DM00047823.pdf/jcr:content/translations/en.DM00047823.pdf)
