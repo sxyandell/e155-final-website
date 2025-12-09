@@ -42,6 +42,6 @@ filters:
 execute:
   freeze: auto
 
-bibliography: references.bib
+
 
 
