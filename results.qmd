@@ -21,15 +21,28 @@ The MCU SystemClock is configured based on the PLL, which is configured to run a
 ## Gyro SPI
 The gyroscope reading printed to the terminal reflected changes in rotational velocity along the x, y, and z axes. SPI transactions verifying these readings are shown below:
 
+![SPI Transaction with controller sending register for lower and upper bits of x-axis velocity reading (0xA8 and 0xAB), and receiving the values in those registers (0x24, 0xFF)](docs\images\DS1Z_QuickPrint8.png){width=30%, fig-align="center"}
 
-![SPI Transaction for gyroscope x-axis reading](docs\images\DS1Z_QuickPrint8.png){width=30%, fig-align="center"}
+![SPI Transaction with controller sending register for lower and upper bits of y-axis velocity reading (0xA9 and 0xAC), and receiving the values in those registers (0x00, 0xB1)](docs\images\DS1Z_QuickPrint9.png){width=30%, fig-align="center"}
 
-![SPI Transaction for gyroscope y-axis reading](docs\images\DS1Z_QuickPrint9.png){width=30%, fig-align="center"}
-
-![SPI Transaction for gyroscope z-axis reading](docs\images\DS1Z_QuickPrint10.png){width=30%, fig-align="center"}
+![SPI Transaction with controller sending register for lower and upper bits of z-axis velocity reading (0xAA and 0xAD), and receiving the values in those registers (0xEC, 0xFF)](docs\images\DS1Z_QuickPrint10.png){width=30%, fig-align="center"}
 
 
 ## MCU Frequency output
+The MCU freqiency outputs, as measured with a RIGOL MSO1104 oscilloscope, were as follows:
+
+* C4: 261 Hz desired, 263 Hz actual
+* D4: 294 Hz desired, 294 Hz actual
+* E4: 330 Hz desired, 312 Hz actual
+* F4: 349 Hz desired, 333 Hz actual
+* G4: 392 Hz desired, 385 Hz actual
+* A4: 440 Hz desired, 417 Hz actual
+* B4: 494 Hz desired, 500 Hz actual
+* C5: 523 Hz desired, 500 Hz actual
+
+The accuracy of the frequencies varies by note, and some notes are outside of the desired 1% accuracy window. Part of this may be due to the measurement method -- we had a difficult time eliminating 60 Hz noise from the output, so we ended up using the oscilliscope's built-in high pass filter. This may have given room for error in the frequency measurements. However, to achieve more accurate frequency measurements, we also could have reconfigured our timer ARR and PSC values to support a higher degree of precision.
+
+
 
 ## ADC output
 The ADC output was printed to the terminal as the potentiometer in a simple voltage divider circuit was adjusted. With a resolution of 6 bits, the ADC output spanned from 0-63 as the voltage into the analog pin spanned from 0-3.3V. This value was updated every 500ms through polling, although this could have been made more frequent.
