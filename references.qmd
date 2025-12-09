@@ -2,13 +2,22 @@
 title: "References"
 ---
 
+## Hardware
+- [STM32L432KC Datasheet](https://hmc-e155.github.io/assets/doc/ds11451-stm32l432kc.pdf)
+- [STM32L432KC Reference Manual](https://hmc-e155.github.io/assets/doc/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [UPduino v3.1 & iCE40 UP5K Datasheet](https://hmc-e155.github.io/assets/doc/FPGA-DS-02008-2-0-iCE40-UltraPlus-Family-Data-Sheet.pdf)
+- [UPduino v3.1 & iCE40 UP5K Usage Guide](https://hmc-e155.github.io/assets/doc/FPGA-TN-02008-1-7-iCE40-Oscillator-Usage-Guide.pdf)
+- [1528-1176-ND Datasheet](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1845/1196_Web.pdf)
+- [MCP4725 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf)
+- [A3G4250DTR Datasheet](https://www.st.com/resource/en/datasheet/a3g4250d.pdf)
 
-[DSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io](https://www.hackster.io/whitney-knitter/dsp-for-fpga-simple-fir-filter-in-verilog-91208d)
+## Software and Tools
+- [Segger Embedded Studio](https://www.segger.com/products/development-tools/embedded-studio/)
+- [Lattice Radiant](https://www.latticesemi.com/latticeradiant)
 
-[MCP4725 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP4725-Data-Sheet-20002039E.pdf)
-
-[Piano Key Frequencies - Wikipedia](https://en.wikipedia.org/wiki/Piano_key_frequencies)
-
-[Project PariVo, E155 2024](https://projectparivo.github.io/ProjectParivoPortfolio/currentStatus/fpgaDesign.html)
-
-[SciPy Signal Processing firwin](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.firwin.html)
+## Tutorials & Technical References
+- [Micro Ps Website](https://hmc-e155.github.io/)
+- [Project PariVo, E155 2024](https://projectparivo.github.io/ProjectParivoPortfolio/currentStatus/fpgaDesign.html)
+- [SciPy Signal Processing firwin](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.firwin.html)
+- [Piano Key Frequencies - Wikipedia](https://en.wikipedia.org/wiki/Piano_key_frequencies)
+- [DSP for FPGA: Simple FIR Filter in Verilog - Whitney Knitter, Hackster.io](https://www.hackster.io/whitney-knitter/dsp-for-fpga-simple-fir-filter-in-verilog-91208d)
